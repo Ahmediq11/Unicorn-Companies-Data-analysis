@@ -47,10 +47,10 @@
       /* Filter bar */
       .filter-bar{flex-wrap:wrap;gap:12px;padding:14px 20px}
       .filter-bar select{width:100%;font-size:.82rem}
-      /* KPI - Grid 2 columns */
-      .kpi-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-      .kpi-card{padding:14px;min-width:0}
-      .kpi-val{font-size:1.35rem}
+      /* KPI - Grid 3 columns */
+      .kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+      .kpi-card{padding:12px 8px;min-width:0}
+      .kpi-val{font-size:1.15rem}
       /* Card padding */
       .card{padding:20px}
       /* Tables: make scrollable on mobile */
@@ -83,11 +83,11 @@
       .exec-header-brand{padding:20px 16px 16px}
       .exec-header-brand h1{font-size:1.15rem;line-height:1.35}
       .exec-report-tag{font-size:.6rem;padding:3px 10px}
-      /* KPI - Grid 2 columns */
-      .kpi-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
-      .kpi-card{padding:12px 10px;min-width:0}
-      .kpi-val{font-size:1.2rem}
-      .kpi-lbl{font-size:.6rem}
+      /* KPI - Grid 3 columns */
+      .kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+      .kpi-card{padding:10px 6px;min-width:0}
+      .kpi-val{font-size:1.0rem}
+      .kpi-lbl{font-size:.55rem}
       /* Cards */
       .card{padding:16px}
       .card-title{font-size:.9rem}
