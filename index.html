@@ -7,221 +7,7 @@
   <title>التقرير التنفيذي الاستراتيجي | Global Unicorn Intelligence Report 2026</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <style>
-    :root{--ink-900:#0D1117;--ink-800:#161B22;--ink-700:#21262D;--ink-600:#30363D;--ink-400:#656D76;--ink-200:#C6CBD1;--ink-100:#E6EAF0;--ink-50:#F6F8FA;--primary:#0A3D62;--accent:#1C6EA4;--accent-l:#2980B9;--gold:#B8860B;--gold-l:#D4A017;--success-l:#27AE60;--danger-l:#C0392B;--warn:#7D5A00;--radius:4px;--radius-m:6px;--shadow-sm:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.04);--shadow-md:0 2px 8px rgba(0,0,0,.10),0 1px 4px rgba(0,0,0,.06)}
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth;font-size:14px}
-    body{font-family:'IBM Plex Sans Arabic','IBM Plex Sans',sans-serif;background:#EDEEF0;color:var(--ink-800);line-height:1.6}
-    .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-    .page-wrap{max-width:1280px;margin:0 auto;padding:0 24px}
-    /* HEADER */
-    .exec-header{background:var(--ink-900);border-bottom:3px solid var(--accent)}
-    .exec-header-inner{display:flex;align-items:stretch;justify-content:space-between}
-    .exec-header-brand{padding:32px 40px 32px 0;flex:1}
-    .exec-report-tag{display:inline-block;font-size:.65rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-l);border:1px solid rgba(28,110,164,.4);padding:3px 10px;border-radius:var(--radius);margin-bottom:14px}
-    .exec-header-brand h1{font-size:1.75rem;font-weight:700;color:#fff;line-height:1.25;margin-bottom:10px}
-    .exec-header-brand h1 span{color:var(--accent-l)}
-    .exec-header-brand p{font-size:.8rem;color:var(--ink-200);max-width:600px;font-weight:300}
-    .exec-header-meta{background:var(--ink-800);border-right:1px solid var(--ink-600);padding:32px 36px;display:flex;flex-direction:column;justify-content:center;gap:10px;min-width:240px}
-    .meta-label{font-size:.6rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-400);display:block}
-    .meta-value{font-size:.8rem;color:var(--ink-200);font-weight:500}
-    .meta-divider{border:none;border-top:1px solid var(--ink-600)}
-    /* LAYOUT */
-    .exec-main{padding:28px 0 48px}.gap{margin-bottom:24px}
-    .sep{border:none;border-top:1px solid var(--ink-100);margin:32px 0}
-    .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .grid-5{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
-    /* ═══════════════════════════════════════════════════════════════
-       RESPONSIVE — TABLET (≤1024px)
-    ═══════════════════════════════════════════════════════════════ */
-    @media(max-width:1024px){
-      .grid-5{grid-template-columns:repeat(3,1fr)}
-      .kpi-grid{grid-template-columns:repeat(3,1fr)}
-      .exec-header-brand h1{font-size:1.4rem}
-      .exec-header-meta{min-width:200px;padding:24px 22px}
-    }
-    /* ═══════════════════════════════════════════════════════════════
-       RESPONSIVE — TABLET PORTRAIT (≤768px)
-    ═══════════════════════════════════════════════════════════════ */
-    @media(max-width:768px){
-      .grid-2,.grid-3,.grid-5{grid-template-columns:1fr}
-      .page-wrap{padding:0 14px}
-      /* Header: stack vertically */
-      .exec-header-inner{flex-direction:column}
-      .exec-header-brand{padding:24px 14px 20px;flex:none}
-      .exec-header-brand h1{font-size:1.25rem}
-      .exec-header-brand p{font-size:.76rem}
-      .exec-header-meta{border-right:none;border-top:1px solid var(--ink-600);min-width:unset;padding:18px 14px;flex-direction:row;flex-wrap:wrap;gap:12px 24px}
-      .meta-divider{display:none}
-      /* Filter bar */
-      .filter-bar{flex-wrap:wrap;gap:8px;padding:10px 14px}
-      .filter-bar select{width:100%;font-size:.82rem}
-      /* KPI */
-      .kpi-grid{grid-template-columns:repeat(2,1fr);gap:10px}
-      .kpi-val{font-size:1.4rem}
-      /* Card padding */
-      .card{padding:16px}
-      /* Tables: make scrollable on mobile */
-      .overflow-x,.exec-table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
-      .exec-table thead th{white-space:nowrap;font-size:.66rem;padding:8px 10px}
-      .exec-table tbody td{font-size:.74rem;padding:7px 10px}
-      /* Section header */
-      .sec-title{font-size:.95rem}
-      /* Corr box */
-      .corr-box{flex-direction:column;gap:10px;padding:14px}
-      .corr-stat{min-width:unset;width:100%}
-      /* Footer */
-      .footer-inner{flex-direction:column;gap:8px;text-align:center}
-      .footer-meta{text-align:center}
-      /* Allocation grid */
-      .stat-g2{grid-template-columns:1fr}
-      /* Chart max-height */
-      .chart-wrap canvas{max-height:260px}
-      /* Exec main */
-      .exec-main{padding:18px 0 36px}
-      .gap{margin-bottom:16px}
-    }
-    /* ═══════════════════════════════════════════════════════════════
-       RESPONSIVE — MOBILE (≤480px)
-    ═══════════════════════════════════════════════════════════════ */
-    @media(max-width:480px){
-      html{font-size:13px}
-      .page-wrap{padding:0 10px}
-      /* Header compact */
-      .exec-header-brand{padding:18px 10px 14px}
-      .exec-header-brand h1{font-size:1.1rem;line-height:1.3}
-      .exec-report-tag{font-size:.58rem;padding:2px 8px}
-      /* KPI: 2 columns on very small screens */
-      .kpi-grid{grid-template-columns:repeat(2,1fr);gap:8px}
-      .kpi-card{padding:14px 12px 12px}
-      .kpi-val{font-size:1.25rem}
-      .kpi-lbl{font-size:.6rem}
-      /* Cards */
-      .card{padding:12px}
-      .card-title{font-size:.85rem}
-      /* Section header */
-      .sec-hdr{gap:10px;margin-bottom:14px}
-      .sec-num{width:26px;height:26px;font-size:.68rem}
-      .sec-title{font-size:.88rem}
-      /* Progress bars */
-      .prg-row{flex-wrap:wrap;gap:6px}
-      .prg-track{flex:none;width:100%;order:3}
-      .prg-lbl{font-size:.74rem}
-      /* Alloc cards */
-      .alloc{padding:14px}
-      .alloc-amt{font-size:1.3rem}
-      /* Compare block */
-      .cmp-hdr{flex-wrap:wrap;gap:6px}
-      /* Charts */
-      .chart-wrap canvas{max-height:220px}
-      /* City cards */
-      .city-num{font-size:1.2rem}
-      /* Disclaimer */
-      .disclaimer{padding:10px 12px;gap:8px}
-      .disclaimer p{font-size:.72rem}
-      /* Filter bar */
-      .filter-bar{padding:8px 10px}
-      /* Footer */
-      .exec-footer{padding:16px 0}
-      .footer-brand,.footer-meta{font-size:.65rem}
-      /* Panel */
-      .panel{padding:12px 14px}
-      .panel p{font-size:.72rem}
-      /* Sep */
-      .sep{margin:20px 0}
-    }
-    /* SECTION HEADERS */
-    .sec-hdr{display:flex;align-items:center;gap:14px;margin-bottom:20px;padding-bottom:14px;border-bottom:2px solid var(--ink-100)}
-    .sec-num{display:flex;align-items:center;justify-content:center;width:32px;height:32px;background:var(--primary);color:#fff;font-size:.75rem;font-weight:700;letter-spacing:.05em;border-radius:var(--radius);flex-shrink:0}
-    .sec-tag{font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
-    .sec-title{font-size:1.05rem;font-weight:700;color:var(--primary);margin-top:2px}
-    /* DISCLAIMER */
-    .disclaimer{background:#FFF8E7;border:1px solid var(--gold-l);border-right:4px solid var(--gold);border-radius:var(--radius-m);padding:14px 20px;display:flex;align-items:flex-start;gap:12px;margin-bottom:20px}
-    .disclaimer svg{width:18px;height:18px;flex-shrink:0;margin-top:2px;color:var(--gold)}
-    .disclaimer p{font-size:.78rem;color:#5A4500;line-height:1.5}
-    .disclaimer strong{color:var(--warn)}
-    /* FILTER */
-    .filter-bar{background:#fff;border:1px solid var(--ink-100);border-radius:var(--radius-m);padding:12px 20px;display:flex;align-items:center;gap:14px;margin-bottom:20px;box-shadow:var(--shadow-sm)}
-    .filter-bar label{font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-400);white-space:nowrap}
-    .filter-bar select{font-size:.8rem;border:1px solid var(--ink-200);border-radius:var(--radius);padding:5px 10px;color:var(--ink-800);background:var(--ink-50);font-family:inherit;cursor:pointer;outline:none}
-    .filter-bar select:focus{border-color:var(--accent)}
-    /* KPI */
-    .kpi-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:8px}
-
-    .kpi-card{background:#fff;border:1px solid var(--ink-100);border-top:3px solid transparent;border-radius:var(--radius-m);padding:18px 16px 16px;box-shadow:var(--shadow-sm);transition:box-shadow .2s}
-    .kpi-card:hover{box-shadow:var(--shadow-md)}
-    .kpi-navy{border-top-color:var(--primary)}.kpi-blue{border-top-color:var(--accent)}.kpi-gold{border-top-color:var(--gold)}.kpi-green{border-top-color:var(--success-l)}.kpi-red{border-top-color:var(--danger-l)}.kpi-slate{border-top-color:var(--ink-400)}
-    .kpi-lbl{font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-400);margin-bottom:6px}
-    .kpi-val{font-size:1.7rem;font-weight:700;color:var(--primary);line-height:1.1}
-    .kpi-val sup{font-size:.9rem;font-weight:600}
-    .kpi-sub{font-size:.7rem;color:var(--ink-400);margin-top:4px}
-    /* CARDS */
-    .card{background:#fff;border:1px solid var(--ink-100);border-radius:var(--radius-m);padding:22px;box-shadow:var(--shadow-sm)}
-    .card-hdr{margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--ink-100)}
-    .card-over{font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
-    .card-title{font-size:.92rem;font-weight:700;color:var(--primary)}
-    .card-sub{font-size:.72rem;color:var(--ink-400);margin-top:2px}
-    /* CHART */
-    .chart-wrap{position:relative;width:100%}.chart-wrap canvas{max-height:320px}
-    /* TABLE */
-    .exec-table{width:100%;border-collapse:collapse}
-    .exec-table thead th{background:var(--primary);color:#fff;font-size:.68rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:9px 12px;text-align:right;white-space:nowrap}
-    .exec-table tbody td{padding:8px 12px;font-size:.78rem;color:var(--ink-700);border-bottom:1px solid var(--ink-100);text-align:right}
-    .exec-table tbody tr:last-child td{border-bottom:none}
-    .exec-table tbody tr:hover{background:var(--ink-50)}
-    .exec-table .hl-row{background:#F0F7FF}
-    .t-success{color:var(--success-l);font-weight:600}.t-danger{color:var(--danger-l);font-weight:600}.t-gold{color:var(--gold);font-weight:600}.t-accent{color:var(--accent);font-weight:600}
-    /* INSIGHT PANELS */
-    .panel{border-radius:var(--radius-m);padding:16px 18px;border-right:4px solid transparent}
-    .panel.info{background:#EBF4FB;border-right-color:var(--accent)}.panel.warn{background:#FDF3E7;border-right-color:var(--gold-l)}.panel.danger{background:#FDEDEB;border-right-color:var(--danger-l)}.panel.ok{background:#E9F7EF;border-right-color:var(--success-l)}
-    .panel-title{font-size:.75rem;font-weight:700;margin-bottom:5px}
-    .panel.info .panel-title{color:var(--primary)}.panel.warn .panel-title{color:var(--warn)}.panel.danger .panel-title{color:#7B2C2C}.panel.ok .panel-title{color:#1A6B3C}
-    .panel p{font-size:.75rem;line-height:1.55;color:var(--ink-700)}
-    /* COMPARE BLOCK */
-    .cmp-block{border:1px solid var(--ink-100);border-radius:var(--radius-m);overflow:hidden}
-    .cmp-hdr{background:var(--ink-50);border-bottom:1px solid var(--ink-100);padding:10px 14px;display:flex;align-items:center;justify-content:space-between}
-    .cmp-title{font-size:.72rem;font-weight:700;color:var(--ink-700)}.cmp-body{padding:14px}
-    .stat-g2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-    .stat-item label{display:block;font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-400);margin-bottom:2px}
-    .stat-item span{font-size:.82rem;font-weight:700;color:var(--ink-800)}
-    /* PROGRESS */
-    .prg-row{display:flex;align-items:center;gap:10px;margin-bottom:10px}
-    .prg-lbl{font-size:.78rem;color:var(--ink-700);flex:1}
-    .prg-val{font-size:.78rem;font-weight:700;color:var(--primary);min-width:36px;text-align:left}
-    .prg-track{flex:2;height:6px;background:var(--ink-100);border-radius:3px;overflow:hidden}
-    .prg-fill{height:100%;border-radius:3px;background:var(--accent)}
-    /* BADGES */
-    .badge{display:inline-block;font-size:.62rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:3px}
-    .b-blue{background:#DBEAFE;color:#1D4ED8}.b-green{background:#D1FAE5;color:#065F46}.b-amber{background:#FEF3C7;color:#92400E}.b-red{background:#FEE2E2;color:#991B1B}.b-slate{background:#F1F5F9;color:#334155}.b-warn{background:#FEF9C3;color:#713F12;border:1px solid #EAB308}
-    /* ALLOCATION */
-    .alloc{border-radius:var(--radius-m);padding:18px;color:#fff}
-    .alloc-amt{font-size:1.6rem;font-weight:800;letter-spacing:-.02em;line-height:1}
-    .alloc-pct{font-size:.62rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;opacity:.7;margin-top:3px;margin-bottom:12px}
-    .alloc-name{font-size:.85rem;font-weight:700;margin-bottom:3px}
-    .alloc-geo{font-size:.72rem;opacity:.75}
-    .alloc-ret{margin-top:12px;background:rgba(0,0,0,.2);border-radius:var(--radius);padding:7px 10px;font-size:.72rem;font-weight:600}
-    .alloc-ret span{color:#FFD700}
-    /* CORRELATION */
-    .corr-box{background:var(--ink-50);border:1px solid var(--ink-100);border-radius:var(--radius-m);padding:18px 22px;display:flex;align-items:flex-start;gap:20px;flex-wrap:wrap}
-    .corr-stat{text-align:center;background:#fff;border:1px solid var(--ink-100);border-radius:var(--radius);padding:12px 20px;min-width:100px}
-    .corr-val{font-size:1.4rem;font-weight:800;color:var(--primary)}.corr-lbl{font-size:.65rem;color:var(--ink-400);margin-top:3px}
-    /* CITY */
-    .city-card{padding:14px;border:1px solid var(--ink-100);border-radius:var(--radius-m);text-align:center}
-    .city-num{font-size:1.5rem;font-weight:800;color:var(--primary)}
-    .city-name{font-size:.72rem;font-weight:700;color:var(--accent);margin-top:4px}
-    .city-meta{font-size:.68rem;color:var(--ink-400)}
-    /* FOOTER */
-    .exec-footer{background:var(--ink-800);border-top:2px solid var(--primary);padding:20px 0}
-    .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
-    .footer-brand{font-size:.72rem;color:var(--ink-400)}.footer-brand strong{color:var(--ink-200)}
-    .footer-meta{font-size:.7rem;color:var(--ink-400);text-align:left}.footer-meta strong{color:var(--ink-200)}
-    /* HELPERS */
-    .flex{display:flex}.flex-col{flex-direction:column}.items-center{align-items:center}.justify-between{justify-content:space-between}.gap-3{gap:12px}.flex-1{flex:1}.mt-2{margin-top:8px}.mt-3{margin-top:12px}.mt-4{margin-top:16px}.mb-3{margin-bottom:12px}.overflow-x{overflow-x:auto}.sp3>*+*{margin-top:12px}.sp4>*+*{margin-top:16px}.w-full{width:100%}
-    .reveal{opacity:0;transform:translateY(18px);transition:opacity .5s ease-out,transform .5s ease-out}.reveal.visible{opacity:1;transform:translateY(0)}
-    @media print{body{background:white}.exec-header{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
-    ::-webkit-scrollbar{width:6px;height:6px}::-webkit-scrollbar-track{background:var(--ink-100)}::-webkit-scrollbar-thumb{background:var(--ink-200);border-radius:3px}
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
@@ -396,23 +182,25 @@
         <div><div class="sec-tag">المحور الثاني</div><h2 id="m2-h" class="sec-title">الاتجاهات الزمنية التاريخية &mdash; Historical Time-Series (حتى 2022)</h2></div>
       </div>
       <div class="grid-2 gap" style="grid-template-columns:3fr 2fr">
-        <div class="card overflow-x reveal">
+        <div class="card reveal">
           <div class="card-hdr"><div class="card-over">الأنماط الزمنية بالصناعة 2015 – 2022</div><div class="card-title">عدد الشركات الجديدة لكل قطاع سنوياً</div></div>
-          <table class="exec-table" style="white-space:nowrap">
-            <thead><tr><th>الصناعة</th><th>2015</th><th>2016</th><th>2017</th><th>2018</th><th>2019</th><th>2020</th><th>2021</th><th>2022</th></tr></thead>
-            <tbody>
-              <tr><td><strong>Fintech</strong></td><td>2</td><td>0</td><td>6</td><td>10</td><td>20</td><td>15</td><td class="t-danger">138</td><td>31</td></tr>
-              <tr><td><strong>Internet S&amp;S</strong></td><td>4</td><td>1</td><td>4</td><td>14</td><td>13</td><td>20</td><td class="t-danger">119</td><td>28</td></tr>
-              <tr><td><strong>Health</strong></td><td>2</td><td>1</td><td>4</td><td>7</td><td>3</td><td>9</td><td class="t-gold">40</td><td>7</td></tr>
-              <tr><td><strong>AI</strong></td><td>2</td><td>1</td><td>4</td><td>13</td><td>14</td><td>3</td><td class="t-gold">29</td><td>6</td></tr>
-              <tr><td><strong>Cybersecurity</strong></td><td>2</td><td>0</td><td>0</td><td>1</td><td>4</td><td>7</td><td class="t-accent">27</td><td>8</td></tr>
-              <tr><td><strong>E-commerce</strong></td><td>9</td><td>6</td><td>4</td><td>4</td><td>12</td><td>16</td><td class="t-accent">47</td><td>7</td></tr>
-              <tr><td><strong>Auto &amp; Transport</strong></td><td>1</td><td>1</td><td>0</td><td class="t-accent">11</td><td>6</td><td>5</td><td>4</td><td>2</td></tr>
-              <tr><td><strong>Consumer &amp; Retail</strong></td><td>0</td><td>3</td><td>4</td><td class="t-accent">6</td><td>3</td><td>1</td><td>7</td><td class="t-danger">0</td></tr>
-              <tr><td><strong>Travel</strong></td><td>1</td><td>0</td><td>2</td><td class="t-accent">4</td><td>3</td><td class="t-danger">0</td><td>3</td><td>1</td></tr>
-              <tr><td><strong>Mobile &amp; Telecom</strong></td><td>4</td><td>1</td><td>5</td><td>5</td><td>4</td><td class="t-accent">8</td><td>6</td><td>2</td></tr>
-            </tbody>
-          </table>
+          <div class="overflow-x">
+            <table class="exec-table" style="white-space:nowrap">
+              <thead><tr><th>الصناعة</th><th>2015</th><th>2016</th><th>2017</th><th>2018</th><th>2019</th><th>2020</th><th>2021</th><th>2022</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Fintech</strong></td><td>2</td><td>0</td><td>6</td><td>10</td><td>20</td><td>15</td><td class="t-danger">138</td><td>31</td></tr>
+                <tr><td><strong>Internet S&amp;S</strong></td><td>4</td><td>1</td><td>4</td><td>14</td><td>13</td><td>20</td><td class="t-danger">119</td><td>28</td></tr>
+                <tr><td><strong>Health</strong></td><td>2</td><td>1</td><td>4</td><td>7</td><td>3</td><td>9</td><td class="t-gold">40</td><td>7</td></tr>
+                <tr><td><strong>AI</strong></td><td>2</td><td>1</td><td>4</td><td>13</td><td>14</td><td>3</td><td class="t-gold">29</td><td>6</td></tr>
+                <tr><td><strong>Cybersecurity</strong></td><td>2</td><td>0</td><td>0</td><td>1</td><td>4</td><td>7</td><td class="t-accent">27</td><td>8</td></tr>
+                <tr><td><strong>E-commerce</strong></td><td>9</td><td>6</td><td>4</td><td>4</td><td>12</td><td>16</td><td class="t-accent">47</td><td>7</td></tr>
+                <tr><td><strong>Auto &amp; Transport</strong></td><td>1</td><td>1</td><td>0</td><td class="t-accent">11</td><td>6</td><td>5</td><td>4</td><td>2</td></tr>
+                <tr><td><strong>Consumer &amp; Retail</strong></td><td>0</td><td>3</td><td>4</td><td class="t-accent">6</td><td>3</td><td>1</td><td>7</td><td class="t-danger">0</td></tr>
+                <tr><td><strong>Travel</strong></td><td>1</td><td>0</td><td>2</td><td class="t-accent">4</td><td>3</td><td class="t-danger">0</td><td>3</td><td>1</td></tr>
+                <tr><td><strong>Mobile &amp; Telecom</strong></td><td>4</td><td>1</td><td>5</td><td>5</td><td>4</td><td class="t-accent">8</td><td>6</td><td>2</td></tr>
+              </tbody>
+            </table>
+          </div>
         </div>
         <div class="flex flex-col sp4 reveal">
           <div class="card">
@@ -461,25 +249,27 @@
             <div class="flex items-center gap-3"><span style="width:10px;height:10px;border-radius:2px;background:#9CA3AF;flex-shrink:0;display:inline-block"></span>أخرى (14%)</div>
           </div>
         </div>
-        <div class="card overflow-x reveal">
+        <div class="card reveal">
           <div class="card-hdr"><div class="card-over">أبرز 12 دولة</div><div class="card-title">العدد، القيمة، والكفاءة الرأسمالية</div></div>
-          <table class="exec-table data-no-filter">
-            <thead><tr><th>الدولة</th><th>العدد</th><th>Avg Val</th><th>Cap Eff</th></tr></thead>
-            <tbody>
-              <tr><td>&#127482;&#127480; USA</td><td>562</td><td>$3.4B</td><td>14.9x</td></tr>
-              <tr><td>&#127464;&#127475; China</td><td>173</td><td>$4.0B</td><td>7.5x</td></tr>
-              <tr><td>&#127470;&#127475; India</td><td>65</td><td>$3.0B</td><td>6.3x</td></tr>
-              <tr><td>&#127468;&#127463; UK</td><td>43</td><td>$4.5B</td><td>6.9x</td></tr>
-              <tr><td>&#127465;&#127466; Germany</td><td>26</td><td>$2.8B</td><td>4.2x</td></tr>
-              <tr><td>&#127467;&#127479; France</td><td>24</td><td>$2.3B</td><td>4.1x</td></tr>
-              <tr><td>&#127470;&#127473; Israel</td><td>20</td><td>$1.9B</td><td>7.2x</td></tr>
-              <tr class="hl-row"><td>&#127472;&#127479; S. Korea</td><td>12</td><td>$3.4B</td><td class="t-success">20.3x</td></tr>
-              <tr class="hl-row"><td>&#127462;&#127482; Australia</td><td>8</td><td class="t-gold">$7.0B</td><td>15.3x</td></tr>
-              <tr class="hl-row"><td>&#127480;&#127466; Sweden</td><td>6</td><td class="t-gold">$10.5B</td><td>4.8x</td></tr>
-              <tr class="hl-row"><td>&#127470;&#127466; Ireland</td><td>5</td><td>$1.8B</td><td class="t-success">29.2x</td></tr>
-              <tr><td>&#127464;&#127462; Canada</td><td>19</td><td>$2.6B</td><td>8.2x</td></tr>
-            </tbody>
-          </table>
+          <div class="overflow-x">
+            <table class="exec-table data-no-filter">
+              <thead><tr><th>الدولة</th><th>العدد</th><th>Avg Val</th><th>Cap Eff</th></tr></thead>
+              <tbody>
+                <tr><td>&#127482;&#127480; USA</td><td>562</td><td>$3.4B</td><td>14.9x</td></tr>
+                <tr><td>&#127464;&#127475; China</td><td>173</td><td>$4.0B</td><td>7.5x</td></tr>
+                <tr><td>&#127470;&#127475; India</td><td>65</td><td>$3.0B</td><td>6.3x</td></tr>
+                <tr><td>&#127468;&#127463; UK</td><td>43</td><td>$4.5B</td><td>6.9x</td></tr>
+                <tr><td>&#127465;&#127466; Germany</td><td>26</td><td>$2.8B</td><td>4.2x</td></tr>
+                <tr><td>&#127467;&#127479; France</td><td>24</td><td>$2.3B</td><td>4.1x</td></tr>
+                <tr><td>&#127470;&#127473; Israel</td><td>20</td><td>$1.9B</td><td>7.2x</td></tr>
+                <tr class="hl-row"><td>&#127472;&#127479; S. Korea</td><td>12</td><td>$3.4B</td><td class="t-success">20.3x</td></tr>
+                <tr class="hl-row"><td>&#127462;&#127482; Australia</td><td>8</td><td class="t-gold">$7.0B</td><td>15.3x</td></tr>
+                <tr class="hl-row"><td>&#127480;&#127466; Sweden</td><td>6</td><td class="t-gold">$10.5B</td><td>4.8x</td></tr>
+                <tr class="hl-row"><td>&#127470;&#127466; Ireland</td><td>5</td><td>$1.8B</td><td class="t-success">29.2x</td></tr>
+                <tr><td>&#127464;&#127462; Canada</td><td>19</td><td>$2.6B</td><td>8.2x</td></tr>
+              </tbody>
+            </table>
+          </div>
         </div>
         <div class="flex flex-col sp4 reveal">
           <div class="card">
@@ -538,21 +328,23 @@
         <div class="chart-wrap"><canvas id="attractivenessChart"></canvas></div>
       </div>
       <div class="grid-2 gap" style="grid-template-columns:3fr 2fr">
-        <div class="card overflow-x reveal">
+        <div class="card reveal">
           <div class="card-hdr"><div class="card-over">مصفوفة الأمثلية الاستثمارية</div><div class="card-title">أفضل تركيبات (صناعة &times; جغرافيا &times; مرحلة) — أكثر من 3 شركات</div></div>
-          <table class="exec-table" style="white-space:nowrap">
-            <thead><tr><th>الصناعة</th><th>القارة</th><th>المرحلة</th><th>#</th><th>Avg Val</th><th>Cap Eff</th></tr></thead>
-            <tbody>
-              <tr class="hl-row"><td><strong>AI &#9733;</strong></td><td>آسيا</td><td>Early 3-5yr</td><td>12</td><td class="t-success">$16.8B</td><td>8.2x</td></tr>
-              <tr><td>Internet S&amp;S</td><td>أوقيانوسيا</td><td>Growth 6-10yr</td><td>4</td><td>$11.0B</td><td class="t-success">21.8x</td></tr>
-              <tr><td>Fintech</td><td>أوروبا</td><td>Growth 6-10yr</td><td>21</td><td>$7.5B</td><td>7.8x</td></tr>
-              <tr><td>E-commerce</td><td>آسيا</td><td>Growth 6-10yr</td><td>23</td><td>$6.1B</td><td>6.3x</td></tr>
-              <tr><td>Fintech</td><td>أمريكا ش.</td><td>Early 3-5yr</td><td>51</td><td>$5.0B</td><td>10.5x</td></tr>
-              <tr><td>AI</td><td>أمريكا ش.</td><td>Blitzscale 0-2yr</td><td>8</td><td>$4.9B</td><td>8.3x</td></tr>
-              <tr><td>Data Analytics</td><td>أمريكا ش.</td><td>Growth 6-10yr</td><td>14</td><td>$4.9B</td><td>6.8x</td></tr>
-              <tr><td>Auto &amp; Transport</td><td>آسيا</td><td>Growth 6-10yr</td><td>5</td><td>$3.8B</td><td>10.2x</td></tr>
-            </tbody>
-          </table>
+          <div class="overflow-x">
+            <table class="exec-table" style="white-space:nowrap">
+              <thead><tr><th>الصناعة</th><th>القارة</th><th>المرحلة</th><th>#</th><th>Avg Val</th><th>Cap Eff</th></tr></thead>
+              <tbody>
+                <tr class="hl-row"><td><strong>AI &#9733;</strong></td><td>آسيا</td><td>Early 3-5yr</td><td>12</td><td class="t-success">$16.8B</td><td>8.2x</td></tr>
+                <tr><td>Internet S&amp;S</td><td>أوقيانوسيا</td><td>Growth 6-10yr</td><td>4</td><td>$11.0B</td><td class="t-success">21.8x</td></tr>
+                <tr><td>Fintech</td><td>أوروبا</td><td>Growth 6-10yr</td><td>21</td><td>$7.5B</td><td>7.8x</td></tr>
+                <tr><td>E-commerce</td><td>آسيا</td><td>Growth 6-10yr</td><td>23</td><td>$6.1B</td><td>6.3x</td></tr>
+                <tr><td>Fintech</td><td>أمريكا ش.</td><td>Early 3-5yr</td><td>51</td><td>$5.0B</td><td>10.5x</td></tr>
+                <tr><td>AI</td><td>أمريكا ش.</td><td>Blitzscale 0-2yr</td><td>8</td><td>$4.9B</td><td>8.3x</td></tr>
+                <tr><td>Data Analytics</td><td>أمريكا ش.</td><td>Growth 6-10yr</td><td>14</td><td>$4.9B</td><td>6.8x</td></tr>
+                <tr><td>Auto &amp; Transport</td><td>آسيا</td><td>Growth 6-10yr</td><td>5</td><td>$3.8B</td><td>10.2x</td></tr>
+              </tbody>
+            </table>
+          </div>
         </div>
         <div class="card reveal">
           <div class="card-hdr"><div class="card-over">الفينتاج المثالي — Vintage Analysis</div><div class="card-title">أفضل سنوات التأسيس للاستثمار (min. 5 شركات)</div></div>
@@ -604,26 +396,30 @@
       <div class="card reveal">
         <div class="card-hdr"><div class="card-over">الملخص التنفيذي</div><h2 id="ref-h" class="card-title">المؤشرات المرجعية الرئيسية — مرجع سريع</h2></div>
         <div class="grid-2" style="gap:24px">
-          <table class="exec-table data-no-filter">
-            <thead><tr><th>المؤشر</th><th>القيمة</th></tr></thead>
-            <tbody>
-              <tr><td>أفضل صناعة بالمؤشر الكلي</td><td class="t-accent">Internet S&amp;S (0.643)</td></tr>
-              <tr><td>أعلى متوسط تقييم بالصناعة</td><td class="t-success">AI ($4.9B)</td></tr>
-              <tr><td>أعلى كفاءة رأسمالية بالصناعة</td><td class="t-success">Internet S&amp;S (28.7x)</td></tr>
-              <tr><td>أفضل دولة بالقيمة الإجمالية</td><td>USA ($1,933B)</td></tr>
-              <tr><td>أفضل دولة بمتوسط التقييم</td><td class="t-gold">السويد ($10.5B)</td></tr>
-            </tbody>
-          </table>
-          <table class="exec-table data-no-filter">
-            <thead><tr><th>المؤشر</th><th>القيمة</th></tr></thead>
-            <tbody>
-              <tr><td>أفضل دولة بالكفاءة الرأسمالية</td><td class="t-success">أيرلندا (29.2x)</td></tr>
-              <tr><td>أكثر دولة نمواً بعد 2019</td><td class="t-success">كندا (+1,900%)</td></tr>
-              <tr><td>أقوى تحالف استثماري</td><td>Seq. China + Tencent (9 صفقات)</td></tr>
-              <tr><td>أفضل مستثمر بالكفاءة</td><td class="t-accent">Bessemer (188.3x)</td></tr>
-              <tr><td>أفضل تركيبة موثقة</td><td class="t-accent">AI &times; آسيا &times; Early = $16.8B</td></tr>
-            </tbody>
-          </table>
+          <div class="overflow-x">
+            <table class="exec-table data-no-filter">
+              <thead><tr><th>المؤشر</th><th>القيمة</th></tr></thead>
+              <tbody>
+                <tr><td>أفضل صناعة بالمؤشر الكلي</td><td class="t-accent">Internet S&amp;S (0.643)</td></tr>
+                <tr><td>أعلى متوسط تقييم بالصناعة</td><td class="t-success">AI ($4.9B)</td></tr>
+                <tr><td>أعلى كفاءة رأسمالية بالصناعة</td><td class="t-success">Internet S&amp;S (28.7x)</td></tr>
+                <tr><td>أفضل دولة بالقيمة الإجمالية</td><td>USA ($1,933B)</td></tr>
+                <tr><td>أفضل دولة بمتوسط التقييم</td><td class="t-gold">السويد ($10.5B)</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="overflow-x">
+            <table class="exec-table data-no-filter">
+              <thead><tr><th>المؤشر</th><th>القيمة</th></tr></thead>
+              <tbody>
+                <tr><td>أفضل دولة بالكفاءة الرأسمالية</td><td class="t-success">أيرلندا (29.2x)</td></tr>
+                <tr><td>أكثر دولة نمواً بعد 2019</td><td class="t-success">كندا (+1,900%)</td></tr>
+                <tr><td>أقوى تحالف استثماري</td><td>Seq. China + Tencent (9 صفقات)</td></tr>
+                <tr><td>أفضل مستثمر بالكفاءة</td><td class="t-accent">Bessemer (188.3x)</td></tr>
+                <tr><td>أفضل تركيبة موثقة</td><td class="t-accent">AI &times; آسيا &times; Early = $16.8B</td></tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </section>
