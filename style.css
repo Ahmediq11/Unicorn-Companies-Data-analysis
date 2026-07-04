@@ -47,9 +47,11 @@
       /* Filter bar */
       .filter-bar{flex-wrap:wrap;gap:12px;padding:14px 20px}
       .filter-bar select{width:100%;font-size:.82rem}
-      /* KPI */
-      .kpi-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+      /* KPI - Swipeable on mobile */
+      .kpi-grid{display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;gap:14px;padding-bottom:12px;margin:0 -20px;padding-left:20px;padding-right:20px}
+      .kpi-card{flex:0 0 220px}
       .kpi-val{font-size:1.4rem}
+      .kpi-grid::-webkit-scrollbar{display:none}
       /* Card padding */
       .card{padding:20px}
       /* Tables: make scrollable on mobile */
@@ -82,11 +84,12 @@
       .exec-header-brand{padding:20px 16px 16px}
       .exec-header-brand h1{font-size:1.15rem;line-height:1.35}
       .exec-report-tag{font-size:.6rem;padding:3px 10px}
-      /* KPI: 1 column on very small screens for readability */
-      .kpi-grid{grid-template-columns:1fr;gap:12px}
-      .kpi-card{padding:16px 14px}
+      /* KPI: Swipeable on very small screens */
+      .kpi-grid{display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;gap:12px;padding-bottom:12px;margin:0 -16px;padding-left:16px;padding-right:16px}
+      .kpi-card{flex:0 0 200px;padding:16px 14px}
       .kpi-val{font-size:1.5rem}
       .kpi-lbl{font-size:.65rem}
+      .kpi-grid::-webkit-scrollbar{display:none}
       /* Cards */
       .card{padding:16px}
       .card-title{font-size:.9rem}
