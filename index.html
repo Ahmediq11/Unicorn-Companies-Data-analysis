@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="تقرير تنفيذي استراتيجي لـ 1,074 شركة مليارية عبر 46 دولة — تحليل شامل للأنماط، الكفاءة الرأسمالية، ودورات السوق حتى 2022." />
+  <title>التقرير التنفيذي الاستراتيجي | Global Unicorn Intelligence Report 2026</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{--ink-900:#0D1117;--ink-800:#161B22;--ink-700:#21262D;--ink-600:#30363D;--ink-400:#656D76;--ink-200:#C6CBD1;--ink-100:#E6EAF0;--ink-50:#F6F8FA;--primary:#0A3D62;--accent:#1C6EA4;--accent-l:#2980B9;--gold:#B8860B;--gold-l:#D4A017;--success-l:#27AE60;--danger-l:#C0392B;--warn:#7D5A00;--radius:4px;--radius-m:6px;--shadow-sm:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.04);--shadow-md:0 2px 8px rgba(0,0,0,.10),0 1px 4px rgba(0,0,0,.06)}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;font-size:14px}
+    body{font-family:'IBM Plex Sans Arabic','IBM Plex Sans',sans-serif;background:#EDEEF0;color:var(--ink-800);line-height:1.6}
+    .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+    .page-wrap{max-width:1280px;margin:0 auto;padding:0 24px}
+    /* HEADER */
+    .exec-header{background:var(--ink-900);border-bottom:3px solid var(--accent)}
+    .exec-header-inner{display:flex;align-items:stretch;justify-content:space-between}
+    .exec-header-brand{padding:32px 40px 32px 0;flex:1}
+    .exec-report-tag{display:inline-block;font-size:.65rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-l);border:1px solid rgba(28,110,164,.4);padding:3px 10px;border-radius:var(--radius);margin-bottom:14px}
+    .exec-header-brand h1{font-size:1.75rem;font-weight:700;color:#fff;line-height:1.25;margin-bottom:10px}
+    .exec-header-brand h1 span{color:var(--accent-l)}
+    .exec-header-brand p{font-size:.8rem;color:var(--ink-200);max-width:600px;font-weight:300}
+    .exec-header-meta{background:var(--ink-800);border-right:1px solid var(--ink-600);padding:32px 36px;display:flex;flex-direction:column;justify-content:center;gap:10px;min-width:240px}
+    .meta-label{font-size:.6rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-400);display:block}
+    .meta-value{font-size:.8rem;color:var(--ink-200);font-weight:500}
+    .meta-divider{border:none;border-top:1px solid var(--ink-600)}
+    /* LAYOUT */
+    .exec-main{padding:28px 0 48px}.gap{margin-bottom:24px}
+    .sep{border:none;border-top:1px solid var(--ink-100);margin:32px 0}
+    .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .grid-5{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+    @media(max-width:1024px){.grid-5{grid-template-columns:repeat(3,1fr)}.kpi-grid{grid-template-columns:repeat(3,1fr)}}
+    @media(max-width:768px){.grid-2,.grid-3,.grid-5{grid-template-columns:1fr}}
+    /* SECTION HEADERS */
+    .sec-hdr{display:flex;align-items:center;gap:14px;margin-bottom:20px;padding-bottom:14px;border-bottom:2px solid var(--ink-100)}
+    .sec-num{display:flex;align-items:center;justify-content:center;width:32px;height:32px;background:var(--primary);color:#fff;font-size:.75rem;font-weight:700;letter-spacing:.05em;border-radius:var(--radius);flex-shrink:0}
+    .sec-tag{font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+    .sec-title{font-size:1.05rem;font-weight:700;color:var(--primary);margin-top:2px}
+    /* DISCLAIMER */
+    .disclaimer{background:#FFF8E7;border:1px solid var(--gold-l);border-right:4px solid var(--gold);border-radius:var(--radius-m);padding:14px 20px;display:flex;align-items:flex-start;gap:12px;margin-bottom:20px}
+    .disclaimer svg{width:18px;height:18px;flex-shrink:0;margin-top:2px;color:var(--gold)}
+    .disclaimer p{font-size:.78rem;color:#5A4500;line-height:1.5}
+    .disclaimer strong{color:var(--warn)}
+    /* FILTER */
+    .filter-bar{background:#fff;border:1px solid var(--ink-100);border-radius:var(--radius-m);padding:12px 20px;display:flex;align-items:center;gap:14px;margin-bottom:20px;box-shadow:var(--shadow-sm)}
+    .filter-bar label{font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-400);white-space:nowrap}
+    .filter-bar select{font-size:.8rem;border:1px solid var(--ink-200);border-radius:var(--radius);padding:5px 10px;color:var(--ink-800);background:var(--ink-50);font-family:inherit;cursor:pointer;outline:none}
+    .filter-bar select:focus{border-color:var(--accent)}
+    /* KPI */
+    .kpi-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:8px}
+    @media(max-width:1024px){.kpi-grid{grid-template-columns:repeat(3,1fr)}}
+    @media(max-width:640px){.kpi-grid{grid-template-columns:repeat(2,1fr)}}
+    .kpi-card{background:#fff;border:1px solid var(--ink-100);border-top:3px solid transparent;border-radius:var(--radius-m);padding:18px 16px 16px;box-shadow:var(--shadow-sm);transition:box-shadow .2s}
+    .kpi-card:hover{box-shadow:var(--shadow-md)}
+    .kpi-navy{border-top-color:var(--primary)}.kpi-blue{border-top-color:var(--accent)}.kpi-gold{border-top-color:var(--gold)}.kpi-green{border-top-color:var(--success-l)}.kpi-red{border-top-color:var(--danger-l)}.kpi-slate{border-top-color:var(--ink-400)}
+    .kpi-lbl{font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-400);margin-bottom:6px}
+    .kpi-val{font-size:1.7rem;font-weight:700;color:var(--primary);line-height:1.1}
+    .kpi-val sup{font-size:.9rem;font-weight:600}
+    .kpi-sub{font-size:.7rem;color:var(--ink-400);margin-top:4px}
+    /* CARDS */
+    .card{background:#fff;border:1px solid var(--ink-100);border-radius:var(--radius-m);padding:22px;box-shadow:var(--shadow-sm)}
+    .card-hdr{margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--ink-100)}
+    .card-over{font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+    .card-title{font-size:.92rem;font-weight:700;color:var(--primary)}
+    .card-sub{font-size:.72rem;color:var(--ink-400);margin-top:2px}
+    /* CHART */
+    .chart-wrap{position:relative;width:100%}.chart-wrap canvas{max-height:320px}
+    /* TABLE */
+    .exec-table{width:100%;border-collapse:collapse}
+    .exec-table thead th{background:var(--primary);color:#fff;font-size:.68rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:9px 12px;text-align:right;white-space:nowrap}
+    .exec-table tbody td{padding:8px 12px;font-size:.78rem;color:var(--ink-700);border-bottom:1px solid var(--ink-100);text-align:right}
+    .exec-table tbody tr:last-child td{border-bottom:none}
+    .exec-table tbody tr:hover{background:var(--ink-50)}
+    .exec-table .hl-row{background:#F0F7FF}
+    .t-success{color:var(--success-l);font-weight:600}.t-danger{color:var(--danger-l);font-weight:600}.t-gold{color:var(--gold);font-weight:600}.t-accent{color:var(--accent);font-weight:600}
+    /* INSIGHT PANELS */
+    .panel{border-radius:var(--radius-m);padding:16px 18px;border-right:4px solid transparent}
+    .panel.info{background:#EBF4FB;border-right-color:var(--accent)}.panel.warn{background:#FDF3E7;border-right-color:var(--gold-l)}.panel.danger{background:#FDEDEB;border-right-color:var(--danger-l)}.panel.ok{background:#E9F7EF;border-right-color:var(--success-l)}
+    .panel-title{font-size:.75rem;font-weight:700;margin-bottom:5px}
+    .panel.info .panel-title{color:var(--primary)}.panel.warn .panel-title{color:var(--warn)}.panel.danger .panel-title{color:#7B2C2C}.panel.ok .panel-title{color:#1A6B3C}
+    .panel p{font-size:.75rem;line-height:1.55;color:var(--ink-700)}
+    /* COMPARE BLOCK */
+    .cmp-block{border:1px solid var(--ink-100);border-radius:var(--radius-m);overflow:hidden}
+    .cmp-hdr{background:var(--ink-50);border-bottom:1px solid var(--ink-100);padding:10px 14px;display:flex;align-items:center;justify-content:space-between}
+    .cmp-title{font-size:.72rem;font-weight:700;color:var(--ink-700)}.cmp-body{padding:14px}
+    .stat-g2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    .stat-item label{display:block;font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-400);margin-bottom:2px}
+    .stat-item span{font-size:.82rem;font-weight:700;color:var(--ink-800)}
+    /* PROGRESS */
+    .prg-row{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+    .prg-lbl{font-size:.78rem;color:var(--ink-700);flex:1}
+    .prg-val{font-size:.78rem;font-weight:700;color:var(--primary);min-width:36px;text-align:left}
+    .prg-track{flex:2;height:6px;background:var(--ink-100);border-radius:3px;overflow:hidden}
+    .prg-fill{height:100%;border-radius:3px;background:var(--accent)}
+    /* BADGES */
+    .badge{display:inline-block;font-size:.62rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:3px}
+    .b-blue{background:#DBEAFE;color:#1D4ED8}.b-green{background:#D1FAE5;color:#065F46}.b-amber{background:#FEF3C7;color:#92400E}.b-red{background:#FEE2E2;color:#991B1B}.b-slate{background:#F1F5F9;color:#334155}.b-warn{background:#FEF9C3;color:#713F12;border:1px solid #EAB308}
+    /* ALLOCATION */
+    .alloc{border-radius:var(--radius-m);padding:18px;color:#fff}
+    .alloc-amt{font-size:1.6rem;font-weight:800;letter-spacing:-.02em;line-height:1}
+    .alloc-pct{font-size:.62rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;opacity:.7;margin-top:3px;margin-bottom:12px}
+    .alloc-name{font-size:.85rem;font-weight:700;margin-bottom:3px}
+    .alloc-geo{font-size:.72rem;opacity:.75}
+    .alloc-ret{margin-top:12px;background:rgba(0,0,0,.2);border-radius:var(--radius);padding:7px 10px;font-size:.72rem;font-weight:600}
+    .alloc-ret span{color:#FFD700}
+    /* CORRELATION */
+    .corr-box{background:var(--ink-50);border:1px solid var(--ink-100);border-radius:var(--radius-m);padding:18px 22px;display:flex;align-items:flex-start;gap:20px;flex-wrap:wrap}
+    .corr-stat{text-align:center;background:#fff;border:1px solid var(--ink-100);border-radius:var(--radius);padding:12px 20px;min-width:100px}
+    .corr-val{font-size:1.4rem;font-weight:800;color:var(--primary)}.corr-lbl{font-size:.65rem;color:var(--ink-400);margin-top:3px}
+    /* CITY */
+    .city-card{padding:14px;border:1px solid var(--ink-100);border-radius:var(--radius-m);text-align:center}
+    .city-num{font-size:1.5rem;font-weight:800;color:var(--primary)}
+    .city-name{font-size:.72rem;font-weight:700;color:var(--accent);margin-top:4px}
+    .city-meta{font-size:.68rem;color:var(--ink-400)}
+    /* FOOTER */
+    .exec-footer{background:var(--ink-800);border-top:2px solid var(--primary);padding:20px 0}
+    .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    .footer-brand{font-size:.72rem;color:var(--ink-400)}.footer-brand strong{color:var(--ink-200)}
+    .footer-meta{font-size:.7rem;color:var(--ink-400);text-align:left}.footer-meta strong{color:var(--ink-200)}
+    /* HELPERS */
+    .flex{display:flex}.flex-col{flex-direction:column}.items-center{align-items:center}.justify-between{justify-content:space-between}.gap-3{gap:12px}.flex-1{flex:1}.mt-2{margin-top:8px}.mt-3{margin-top:12px}.mt-4{margin-top:16px}.mb-3{margin-bottom:12px}.overflow-x{overflow-x:auto}.sp3>*+*{margin-top:12px}.sp4>*+*{margin-top:16px}.w-full{width:100%}
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .5s ease-out,transform .5s ease-out}.reveal.visible{opacity:1;transform:translateY(0)}
+    @media print{body{background:white}.exec-header{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+    ::-webkit-scrollbar{width:6px;height:6px}::-webkit-scrollbar-track{background:var(--ink-100)}::-webkit-scrollbar-thumb{background:var(--ink-200);border-radius:3px}
+  </style>
+</head>
+<body>
+
+<header class="exec-header" role="banner">
+  <div class="page-wrap">
+    <div class="exec-header-inner">
+      <div class="exec-header-brand">
+        <div class="exec-report-tag">C-Level Intelligence Report &middot; Confidential</div>
+        <h1>التقرير التنفيذي الاستراتيجي<br/><span>للشركات المليارية العالمية</span></h1>
+        <p>تحليل متكامل لـ <strong style="color:#fff">1,074 شركة مليارية</strong> عبر 46 دولة &mdash; تحليل الأنماط الخفية، الكفاءة الرأسمالية، ودورات السوق. بيانات حتى 2022.</p>
+      </div>
+      <div class="exec-header-meta">
+        <div><span class="meta-label">المصدر</span><span class="meta-value">Unicorn_Companies.csv</span></div>
+        <hr class="meta-divider"/>
+        <div><span class="meta-label">تاريخ الإصدار</span><span class="meta-value">يونيو 2026</span></div>
+        <hr class="meta-divider"/>
+        <div><span class="meta-label">نطاق البيانات</span><span class="meta-value">2007 &mdash; 2022</span></div>
+        <hr class="meta-divider"/>
+        <div><span class="meta-label">التصنيف</span><span class="meta-value">سري &mdash; للاستخدام الداخلي</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="exec-main" id="main">
+  <div class="page-wrap">
+
+    <!-- <div class="disclaimer" role="note">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <p><strong>تنويه منهجي جوهري:</strong> هذا التقرير أداة عرض تحليلي ملخصة وليس نموذجاً تنبئياً متكاملاً. تعاني البيانات من <strong>تحيز البقاء (Survivorship Bias)</strong> — لا تشمل الشركات التي أخفقت. التقييمات المُعروضة قيم اسمية تأثرت بسياسة الفائدة الصفرية (ZIRP). <strong>لا يصح استقراء الأرقام للمستقبل دون بيانات ما بعد 2022.</strong></p>
+    </div> -->
+
+    <div class="filter-bar">
+      <label for="industryFilter">تصفية حسب القطاع:</label>
+      <select id="industryFilter" onchange="filterDashboard()">
+        <option value="ALL">جميع القطاعات</option>
+        <option value="Fintech">Fintech</option>
+        <option value="Internet">Internet S&amp;S</option>
+        <option value="E-commerce">E-commerce</option>
+        <option value="AI">Artificial Intelligence</option>
+        <option value="Health">Health</option>
+        <option value="Cybersecurity">Cybersecurity</option>
+      </select>
+    </div>
+
+    <!-- KPI -->
+    <section class="gap" aria-labelledby="kpi-h">
+      <h2 id="kpi-h" class="sr-only">المؤشرات التنفيذية الرئيسية</h2>
+      <div class="kpi-grid">
+        <div class="kpi-card kpi-navy reveal"><div class="kpi-lbl">إجمالي الشركات</div><div class="kpi-val">1,074</div><div class="kpi-sub">شركة مليارية &middot; 46 دولة</div></div>
+        <div class="kpi-card kpi-blue reveal"><div class="kpi-lbl">إجمالي التقييم</div><div class="kpi-val">$3,711<sup>B</sup></div><div class="kpi-sub">متوسط $3.46B &middot; وسيط $2.00B</div></div>
+        <div class="kpi-card kpi-gold reveal"><div class="kpi-lbl">إجمالي التمويل</div><div class="kpi-val">$591<sup>B</sup></div><div class="kpi-sub">كفاءة رأسمالية: 6.27x</div></div>
+        <div class="kpi-card kpi-green reveal"><div class="kpi-lbl">متوسط سنوات الوصول</div><div class="kpi-val">7.0<sup style="font-size:.75rem"> سنة</sup></div><div class="kpi-sub">الوسيط: 6 سنوات</div></div>
+        <div class="kpi-card kpi-red reveal"><div class="kpi-lbl">ذروة 2021</div><div class="kpi-val" style="color:var(--danger-l)">520</div><div class="kpi-sub">شركة في عام واحد (+381%)</div></div>
+        <div class="kpi-card kpi-slate reveal"><div class="kpi-lbl">أعلى كفاءة رأسمالية</div><div class="kpi-val" style="font-size:1.4rem">4,000<sup>x</sup></div><div class="kpi-sub">Zapier &mdash; Internet SaaS</div></div>
+      </div>
+    </section>
+
+    <hr class="sep"/>
+
+    <!-- MODULE I -->
+    <section class="gap" aria-labelledby="m1-h">
+      <div class="sec-hdr">
+        <div class="sec-num" aria-hidden="true">I</div>
+        <div><div class="sec-tag">المحور الأول</div><h2 id="m1-h" class="sec-title">التعرف على الأنماط الخفية &mdash; Pattern Recognition</h2></div>
+      </div>
+
+      <div class="grid-2 gap" style="grid-template-columns:3fr 2fr">
+        <div class="card reveal">
+          <div class="card-hdr flex justify-between items-center">
+            <div><div class="card-over">سلسلة زمنية 2007 – 2022</div><div class="card-title">موجات إنشاء الشركات المليارية</div><div class="card-sub">فقاعة 2021: 520 شركة في سنة واحدة (+381% YoY)</div></div>
+            <span class="badge b-red">ذروة ZIRP</span>
+          </div>
+          <div class="chart-wrap"><canvas id="lineChart"></canvas></div>
+        </div>
+        <div class="card reveal">
+          <div class="card-hdr"><div class="card-over">تقسيم سرعة الوصول</div><div class="card-title">الشركات السريعة مقابل البطيئة</div></div>
+          <div class="sp3">
+            <div class="cmp-block">
+              <div class="cmp-hdr"><span class="cmp-title">فائقة السرعة — 3 سنوات أو أقل</span><span class="badge b-blue">212 شركة (19.7%)</span></div>
+              <div class="cmp-body"><div class="stat-g2">
+                <div class="stat-item"><label>متوسط التقييم</label><span>$3.60B</span></div>
+                <div class="stat-item"><label>الكفاءة الرأسمالية</label><span>7.7x</span></div>
+                <div class="stat-item"><label>متوسط التمويل</label><span>$0.66B</span></div>
+                <div class="stat-item"><label>القطاع الأول</label><span>Fintech (25%)</span></div>
+              </div></div>
+            </div>
+            <div class="cmp-block">
+              <div class="cmp-hdr"><span class="cmp-title">النمو المتأني — أكثر من 3 سنوات</span><span class="badge b-slate">862 شركة (80.3%)</span></div>
+              <div class="cmp-body"><div class="stat-g2">
+                <div class="stat-item"><label>متوسط التقييم</label><span>$3.42B</span></div>
+                <div class="stat-item"><label>الكفاءة الرأسمالية</label><span class="t-success">12.2x ↑</span></div>
+                <div class="stat-item"><label>متوسط التمويل</label><span>$0.53B</span></div>
+                <div class="stat-item"><label>القطاع الأول</label><span>Internet S&amp;S (21%)</span></div>
+              </div></div>
+            </div>
+            <div class="panel info"><div class="panel-title">رؤية مضادة للحدس</div><p>الشركات ذات النمو المتأني تُحقق كفاءة رأسمالية أعلى بـ <strong>58.4%</strong> — التوسع المدروس ينتج عوائد أكثر استدامة.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card gap reveal">
+        <div class="card-hdr"><div class="card-over">تحليل الارتباط الإحصائي</div><div class="card-title">التمويل المُجمَّع مقابل التقييم النهائي</div></div>
+        <div class="corr-box">
+          <div class="corr-stat"><div class="corr-val">0.60</div><div class="corr-lbl">Pearson r<br/>ارتباط متوسط</div></div>
+          <div class="corr-stat"><div class="corr-val">0.36</div><div class="corr-lbl">R² — التمويل يُفسر<br/>36% فقط</div></div>
+          <div class="corr-stat"><div class="corr-val" style="color:var(--danger-l)">64%</div><div class="corr-lbl">تباين غير مُفسَّر<br/>بعوامل أخرى</div></div>
+          <div class="flex-1"><p style="font-size:.8rem;color:#30363D;line-height:1.6"><strong style="color:var(--primary)">التفسير التنفيذي:</strong> العلاقة بين التمويل والتقييم النهائي متوسطة القوة فقط. 64% من التباين يعود لجودة المنتج، توقيت السوق، القطاع، والظروف الاقتصادية.</p></div>
+        </div>
+      </div>
+
+      <div class="grid-2 gap" style="grid-template-columns:3fr 2fr">
+        <div class="card reveal">
+          <div class="card-hdr flex justify-between items-center">
+            <div><div class="card-over">الكفاءة الرأسمالية بالصناعة</div><div class="card-title">أعلى 10 صناعات — نسبة التقييم إلى التمويل</div></div>
+            <span class="badge b-green">الأعلى = الأفضل</span>
+          </div>
+          <div class="chart-wrap"><canvas id="capEffChart"></canvas></div>
+        </div>
+        <div class="card reveal">
+          <div class="card-hdr"><div class="card-over">أبطال رأس المال</div><div class="card-title">شركات حوّلت القليل إلى الكثير</div></div>
+          <div class="overflow-x">
+            <table class="exec-table data-no-filter">
+              <thead><tr><th>الشركة</th><th>التقييم</th><th>التمويل</th><th>الكفاءة</th></tr></thead>
+              <tbody>
+                <tr class="hl-row"><td><strong>Zapier</strong></td><td>$4B</td><td>$1M</td><td class="t-success">4,000x</td></tr>
+                <tr><td><strong>Dunamu</strong></td><td>$9B</td><td>$70M</td><td class="t-success">127x</td></tr>
+                <tr><td><strong>Workhuman</strong></td><td>$1B</td><td>$10M</td><td class="t-success">111x</td></tr>
+                <tr><td><strong>CFGI</strong></td><td>$2B</td><td>$20M</td><td class="t-success">105x</td></tr>
+                <tr><td><strong>DJI Innovations</strong></td><td>$8B</td><td>$100M</td><td class="t-success">76x</td></tr>
+                <tr><td><strong>Canva</strong></td><td>$40B</td><td>$570M</td><td class="t-success">70x</td></tr>
+                <tr><td><strong>SHEIN</strong></td><td>$100B</td><td>$2B</td><td class="t-success">50x</td></tr>
+                <tr><td><strong>Stripe</strong></td><td>$95B</td><td>$2B</td><td class="t-success">48x</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <div class="card-hdr"><div class="card-over">تجميع سلوك المستثمرين</div><div class="card-title">أكبر المستثمرين حجماً وأكثرهم كفاءةً رأسمالية</div></div>
+        <div class="grid-2" style="gap:24px">
+          <div>
+            <div class="mb-3" style="font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-400)">الأعلى نشاطاً — حجم المحفظة</div>
+            <div class="prg-row"><span class="prg-lbl"><strong>Accel</strong> &middot; 60 شركة &middot; $216B</span><div class="prg-track"><div class="prg-fill" style="width:100%"></div></div><span class="prg-val">#1</span></div>
+            <div class="prg-row"><span class="prg-lbl"><strong>Andreessen Horowitz</strong> &middot; 53 شركة</span><div class="prg-track"><div class="prg-fill" style="width:88%"></div></div><span class="prg-val">#2</span></div>
+            <div class="prg-row"><span class="prg-lbl"><strong>Tiger Global Management</strong> &middot; 53 شركة</span><div class="prg-track"><div class="prg-fill" style="width:88%"></div></div><span class="prg-val">#3</span></div>
+            <div class="prg-row"><span class="prg-lbl"><strong>Sequoia Capital China</strong> &middot; 48 شركة</span><div class="prg-track"><div class="prg-fill" style="width:80%;background:var(--gold-l)"></div></div><span class="prg-val">#4</span></div>
+            <div class="prg-row"><span class="prg-lbl"><strong>Sequoia Capital</strong> &middot; 47 شركة</span><div class="prg-track"><div class="prg-fill" style="width:78%;background:var(--success-l)"></div></div><span class="prg-val">#5</span></div>
+          </div>
+          <div>
+            <div class="mb-3" style="font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-400)">أعلى كفاءة رأسمالية (min. 5 شركات)</div>
+            <div class="prg-row"><span class="prg-lbl"><strong>Bessemer Venture Partners</strong> &middot; 22 شركة</span><div class="prg-track"><div class="prg-fill" style="width:100%;background:var(--success-l)"></div></div><span class="prg-val t-success">188x</span></div>
+            <div class="prg-row"><span class="prg-lbl"><strong>Sequoia Capital</strong> &middot; 47 شركة</span><div class="prg-track"><div class="prg-fill" style="width:51%;background:var(--success-l)"></div></div><span class="prg-val t-success">96.6x</span></div>
+            <div class="prg-row"><span class="prg-lbl"><strong>Shunwei Capital</strong> &middot; 7 شركات</span><div class="prg-track"><div class="prg-fill" style="width:12%"></div></div><span class="prg-val t-accent">22.4x</span></div>
+            <div class="prg-row"><span class="prg-lbl"><strong>Accel Partners</strong> &middot; 5 شركات</span><div class="prg-track"><div class="prg-fill" style="width:9%"></div></div><span class="prg-val t-accent">17.8x</span></div>
+            <div class="prg-row"><span class="prg-lbl"><strong>Qualcomm Ventures</strong> &middot; 12 شركة</span><div class="prg-track"><div class="prg-fill" style="width:9%"></div></div><span class="prg-val t-accent">16.7x</span></div>
+            <div class="prg-row"><span class="prg-lbl"><strong>CapitalG (Google)</strong> &middot; 6 شركات</span><div class="prg-track"><div class="prg-fill" style="width:8%"></div></div><span class="prg-val">14.5x</span></div>
+            <div class="prg-row"><span class="prg-lbl"><strong>Coatue Management</strong> &middot; 22 شركة</span><div class="prg-track"><div class="prg-fill" style="width:7%"></div></div><span class="prg-val">12.7x</span></div>
+            <div class="panel ok mt-3"><div class="panel-title">مؤشر تشغيلي</div><p>Bessemer و Sequoia — وجودهما في أي صفقة مؤشر قوي على نمط «تمويل منخفض / تقييم مرتفع».</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="sep"/>
+
+    <!-- MODULE II -->
+    <section class="gap" aria-labelledby="m2-h">
+      <div class="sec-hdr">
+        <div class="sec-num" aria-hidden="true">II</div>
+        <div><div class="sec-tag">المحور الثاني</div><h2 id="m2-h" class="sec-title">الاتجاهات الزمنية التاريخية &mdash; Historical Time-Series (حتى 2022)</h2></div>
+      </div>
+      <div class="grid-2 gap" style="grid-template-columns:3fr 2fr">
+        <div class="card overflow-x reveal">
+          <div class="card-hdr"><div class="card-over">الأنماط الزمنية بالصناعة 2015 – 2022</div><div class="card-title">عدد الشركات الجديدة لكل قطاع سنوياً</div></div>
+          <table class="exec-table" style="white-space:nowrap">
+            <thead><tr><th>الصناعة</th><th>2015</th><th>2016</th><th>2017</th><th>2018</th><th>2019</th><th>2020</th><th>2021</th><th>2022</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Fintech</strong></td><td>2</td><td>0</td><td>6</td><td>10</td><td>20</td><td>15</td><td class="t-danger">138</td><td>31</td></tr>
+              <tr><td><strong>Internet S&amp;S</strong></td><td>4</td><td>1</td><td>4</td><td>14</td><td>13</td><td>20</td><td class="t-danger">119</td><td>28</td></tr>
+              <tr><td><strong>Health</strong></td><td>2</td><td>1</td><td>4</td><td>7</td><td>3</td><td>9</td><td class="t-gold">40</td><td>7</td></tr>
+              <tr><td><strong>AI</strong></td><td>2</td><td>1</td><td>4</td><td>13</td><td>14</td><td>3</td><td class="t-gold">29</td><td>6</td></tr>
+              <tr><td><strong>Cybersecurity</strong></td><td>2</td><td>0</td><td>0</td><td>1</td><td>4</td><td>7</td><td class="t-accent">27</td><td>8</td></tr>
+              <tr><td><strong>E-commerce</strong></td><td>9</td><td>6</td><td>4</td><td>4</td><td>12</td><td>16</td><td class="t-accent">47</td><td>7</td></tr>
+              <tr><td><strong>Auto &amp; Transport</strong></td><td>1</td><td>1</td><td>0</td><td class="t-accent">11</td><td>6</td><td>5</td><td>4</td><td>2</td></tr>
+              <tr><td><strong>Consumer &amp; Retail</strong></td><td>0</td><td>3</td><td>4</td><td class="t-accent">6</td><td>3</td><td>1</td><td>7</td><td class="t-danger">0</td></tr>
+              <tr><td><strong>Travel</strong></td><td>1</td><td>0</td><td>2</td><td class="t-accent">4</td><td>3</td><td class="t-danger">0</td><td>3</td><td>1</td></tr>
+              <tr><td><strong>Mobile &amp; Telecom</strong></td><td>4</td><td>1</td><td>5</td><td>5</td><td>4</td><td class="t-accent">8</td><td>6</td><td>2</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="flex flex-col sp4 reveal">
+          <div class="card">
+            <div class="card-hdr"><div class="card-over" style="color:var(--success-l)">صناعات النمو التاريخي 2015–2022</div><div class="card-title">أعلى معدلات النمو المُسجَّلة</div></div>
+            <div class="sp3">
+              <div class="panel info"><div class="panel-title">1. Fintech — +8,342% تاريخي</div><p>222 شركة &middot; أعلى نمو مُسجَّل &middot; Slope: +11.07 unicorns/year</p></div>
+              <div class="panel info"><div class="panel-title">2. Internet S&amp;S — +2,839% تاريخي</div><p>203 شركة &middot; أعلى كفاءة رأسمالية 28.7x &middot; Slope: +9.58/year</p></div>
+              <div class="panel info"><div class="panel-title">3. Health — +1,466% تاريخي</div><p>73 شركة &middot; أطول وقت وصول 8.2 سنة &middot; Slope: +2.87/year</p></div>
+              <div class="panel warn"><div class="panel-title">حدود المنهجية — تحذير</div><p>هذه الأرقام تعكس الأداء التاريخي (2015–2022) فقط. طفرة 2021 تُضخّم الأرقام اصطناعياً. <strong>لا يصح الاستقراء المستقبلي.</strong></p></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-hdr"><div class="card-over" style="color:var(--danger-l)">صناعات تحت ضغط هيكلي</div></div>
+            <div class="sp3">
+              <div class="panel danger"><div class="panel-title">Consumer &amp; Retail — 0 شركة في 2022</div><p>ذروة 2018 &middot; متوسط تمويل $1.1B &middot; ضغط تضخمي مستمر</p></div>
+              <div class="panel danger"><div class="panel-title">Travel — أدنى كفاءة رأسمالية (3.5x)</div><p>حساسية جيوسياسية عالية &middot; تعافٍ محدود</p></div>
+              <div class="panel danger"><div class="panel-title">Mobile &amp; Telecom — أدنى متوسط تقييم ($2.3B)</div><p>تشبع السوق &middot; إحلال تطبيقات AI التدريجي</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel danger reveal" style="padding:20px 24px">
+        <div class="panel-title" style="font-size:.88rem">إنذار دورة السوق &mdash; Market Cycle Alert</div>
+        <p style="margin-top:6px;font-size:.82rem;line-height:1.65">عام 2021 شهد <strong>520 شركة</strong> جديدة — أي <strong>4.8 أضعاف المتوسط السنوي 2015–2020</strong>. بالتزامن مع انخفاض متوسط التقييم إلى $2.3B (أدنى نقطة)، يُشير هذا إلى <strong>تضخم كمي مصحوب بتراجع نوعي</strong> — نمط كلاسيكي لذروة الدورة قبيل التصحيح. المستثمرون الذين ركزوا على الكمية تكبّدوا خسائر جوهرية.</p>
+      </div>
+    </section>
+
+    <hr class="sep"/>
+
+    <!-- MODULE III -->
+    <section class="gap" aria-labelledby="m3-h">
+      <div class="sec-hdr">
+        <div class="sec-num" aria-hidden="true">III</div>
+        <div><div class="sec-tag">المحور الثالث</div><h2 id="m3-h" class="sec-title">التحليل الدلالي والجغرافي &mdash; Semantic &amp; Geographic Analysis</h2></div>
+      </div>
+      <div class="grid-3 gap">
+        <div class="card reveal flex flex-col items-center">
+          <div class="card-hdr w-full"><div class="card-over">توزيع القيمة الجغرافية</div><div class="card-title">الخريطة الجغرافية للشركات المليارية</div></div>
+          <div class="chart-wrap" style="max-width:260px"><canvas id="doughnutChart"></canvas></div>
+          <div class="mt-4 w-full" style="display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:.75rem">
+            <div class="flex items-center gap-3"><span style="width:10px;height:10px;border-radius:2px;background:#0A3D62;flex-shrink:0;display:inline-block"></span>USA (52%)</div>
+            <div class="flex items-center gap-3"><span style="width:10px;height:10px;border-radius:2px;background:#B91C1C;flex-shrink:0;display:inline-block"></span>China (16%)</div>
+            <div class="flex items-center gap-3"><span style="width:10px;height:10px;border-radius:2px;background:#D97706;flex-shrink:0;display:inline-block"></span>India (6%)</div>
+            <div class="flex items-center gap-3"><span style="width:10px;height:10px;border-radius:2px;background:#6D28D9;flex-shrink:0;display:inline-block"></span>UK (4%)</div>
+            <div class="flex items-center gap-3"><span style="width:10px;height:10px;border-radius:2px;background:#1A6B3C;flex-shrink:0;display:inline-block"></span>Europe (8%)</div>
+            <div class="flex items-center gap-3"><span style="width:10px;height:10px;border-radius:2px;background:#9CA3AF;flex-shrink:0;display:inline-block"></span>أخرى (14%)</div>
+          </div>
+        </div>
+        <div class="card overflow-x reveal">
+          <div class="card-hdr"><div class="card-over">أبرز 12 دولة</div><div class="card-title">العدد، القيمة، والكفاءة الرأسمالية</div></div>
+          <table class="exec-table data-no-filter">
+            <thead><tr><th>الدولة</th><th>العدد</th><th>Avg Val</th><th>Cap Eff</th></tr></thead>
+            <tbody>
+              <tr><td>&#127482;&#127480; USA</td><td>562</td><td>$3.4B</td><td>14.9x</td></tr>
+              <tr><td>&#127464;&#127475; China</td><td>173</td><td>$4.0B</td><td>7.5x</td></tr>
+              <tr><td>&#127470;&#127475; India</td><td>65</td><td>$3.0B</td><td>6.3x</td></tr>
+              <tr><td>&#127468;&#127463; UK</td><td>43</td><td>$4.5B</td><td>6.9x</td></tr>
+              <tr><td>&#127465;&#127466; Germany</td><td>26</td><td>$2.8B</td><td>4.2x</td></tr>
+              <tr><td>&#127467;&#127479; France</td><td>24</td><td>$2.3B</td><td>4.1x</td></tr>
+              <tr><td>&#127470;&#127473; Israel</td><td>20</td><td>$1.9B</td><td>7.2x</td></tr>
+              <tr class="hl-row"><td>&#127472;&#127479; S. Korea</td><td>12</td><td>$3.4B</td><td class="t-success">20.3x</td></tr>
+              <tr class="hl-row"><td>&#127462;&#127482; Australia</td><td>8</td><td class="t-gold">$7.0B</td><td>15.3x</td></tr>
+              <tr class="hl-row"><td>&#127480;&#127466; Sweden</td><td>6</td><td class="t-gold">$10.5B</td><td>4.8x</td></tr>
+              <tr class="hl-row"><td>&#127470;&#127466; Ireland</td><td>5</td><td>$1.8B</td><td class="t-success">29.2x</td></tr>
+              <tr><td>&#127464;&#127462; Canada</td><td>19</td><td>$2.6B</td><td>8.2x</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="flex flex-col sp4 reveal">
+          <div class="card">
+            <div class="card-hdr"><div class="card-over">شبكات الاستثمار المشترك</div><div class="card-title">أبرز ثنائيات التحالف</div></div>
+            <div class="sp3">
+              <div class="flex justify-between items-center" style="padding:8px 0;border-bottom:1px solid var(--ink-100)"><span style="font-size:.78rem">Seq. Capital China &times; Tencent</span><span class="badge b-amber">9 صفقات</span></div>
+              <div class="flex justify-between items-center" style="padding:8px 0;border-bottom:1px solid var(--ink-100)"><span style="font-size:.78rem">Index Ventures &times; Sequoia</span><span class="badge b-blue">6 صفقات</span></div>
+              <div class="flex justify-between items-center" style="padding:8px 0;border-bottom:1px solid var(--ink-100)"><span style="font-size:.78rem">Seq. India &times; Tiger Global</span><span class="badge b-slate">5 صفقات</span></div>
+              <div class="flex justify-between items-center" style="padding:8px 0;border-bottom:1px solid var(--ink-100)"><span style="font-size:.78rem">Accel &times; Tiger Global</span><span class="badge b-slate">5 صفقات</span></div>
+              <div class="flex justify-between items-center" style="padding:8px 0"><span style="font-size:.78rem">a16z &times; Sequoia Capital</span><span class="badge b-green">4 صفقات</span></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-hdr"><div class="card-over" style="color:var(--success-l)">جغرافيات ناشئة 2019–2022</div></div>
+            <div class="sp3">
+              <div class="flex justify-between items-center"><span style="font-size:.78rem">&#127464;&#127462; Canada</span><span class="badge b-green">+1,900%</span></div>
+              <div class="flex justify-between items-center"><span style="font-size:.78rem">&#127480;&#127468; Singapore</span><span class="badge b-green">+1,200%</span></div>
+              <div class="flex justify-between items-center"><span style="font-size:.78rem">&#127470;&#127473; Israel</span><span class="badge b-green">+900%</span></div>
+              <div class="flex justify-between items-center"><span style="font-size:.78rem">&#127470;&#127475; India</span><span class="badge b-blue">+638%</span></div>
+              <div class="flex justify-between items-center"><span style="font-size:.78rem">&#127474;&#127485; Mexico</span><span class="badge b-blue">+600%</span></div>
+              <div class="flex justify-between items-center"><span style="font-size:.78rem">&#127463;&#127479; Brazil</span><span class="badge b-amber">+400%</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card reveal">
+        <div class="card-hdr"><div class="card-over">مراكز المدن العالمية</div><div class="card-title">أبرز 10 مدن تقنية عالمياً</div></div>
+        <div class="grid-5">
+          <div class="city-card"><div class="city-num">243</div><div class="city-name">San Francisco</div><div class="city-meta">$865B &middot; $3.6B avg</div></div>
+          <div class="city-card"><div class="city-num">73</div><div class="city-name">New York</div><div class="city-meta">$292B &middot; $4.0B avg</div></div>
+          <div class="city-card"><div class="city-num">72</div><div class="city-name">Beijing</div><div class="city-meta">$320B &middot; $4.4B avg</div></div>
+          <div class="city-card"><div class="city-num">50</div><div class="city-name">Shanghai</div><div class="city-meta">$178B &middot; $5.2B avg</div></div>
+          <div class="city-card"><div class="city-num">29</div><div class="city-name">Bengaluru</div><div class="city-meta">$107B &middot; $3.7B avg</div></div>
+          <div class="city-card" style="border:2px solid var(--gold)"><div class="city-num" style="color:var(--gold)">19</div><div class="city-name" style="color:var(--gold)">Shenzhen &#9733;</div><div class="city-meta">$141B &middot; $7.4B avg</div></div>
+          <div class="city-card"><div class="city-num">19</div><div class="city-name">Paris</div><div class="city-meta">$49B &middot; $2.6B avg</div></div>
+          <div class="city-card"><div class="city-num">18</div><div class="city-name">Palo Alto</div><div class="city-meta">$53B &middot; $2.9B avg</div></div>
+          <div class="city-card"><div class="city-num">17</div><div class="city-name">Berlin</div><div class="city-meta">$41B &middot; $2.4B avg</div></div>
+          <div class="city-card"><div class="city-num">16</div><div class="city-name">London</div><div class="city-meta">$75B &middot; $4.7B avg</div></div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="sep"/>
+
+    <!-- MODULE IV -->
+    <section class="gap" aria-labelledby="m4-h">
+      <div class="sec-hdr">
+        <div class="sec-num" aria-hidden="true">IV</div>
+        <div><div class="sec-tag">المحور الرابع</div><h2 id="m4-h" class="sec-title">التحليل التوجيهي وصناعة القرار &mdash; توزيع محفظة $500M</h2></div>
+      </div>
+      <div class="card gap reveal">
+        <div class="card-hdr flex justify-between items-center">
+          <div><div class="card-over">مؤشر الجاذبية الاستثمارية</div><div class="card-title">نموذج تحليلي افتراضي — ليس مستخرجاً من البيانات الخام مباشرةً</div><div class="card-sub">الأوزان: 35% متوسط التقييم + 30% كفاءة رأس المال + 20% حجم القطاع + 15% سرعة الوصول</div></div>
+          <span class="badge b-warn">نموذج اصطناعي</span>
+        </div>
+        <div class="chart-wrap"><canvas id="attractivenessChart"></canvas></div>
+      </div>
+      <div class="grid-2 gap" style="grid-template-columns:3fr 2fr">
+        <div class="card overflow-x reveal">
+          <div class="card-hdr"><div class="card-over">مصفوفة الأمثلية الاستثمارية</div><div class="card-title">أفضل تركيبات (صناعة &times; جغرافيا &times; مرحلة) — أكثر من 3 شركات</div></div>
+          <table class="exec-table" style="white-space:nowrap">
+            <thead><tr><th>الصناعة</th><th>القارة</th><th>المرحلة</th><th>#</th><th>Avg Val</th><th>Cap Eff</th></tr></thead>
+            <tbody>
+              <tr class="hl-row"><td><strong>AI &#9733;</strong></td><td>آسيا</td><td>Early 3-5yr</td><td>12</td><td class="t-success">$16.8B</td><td>8.2x</td></tr>
+              <tr><td>Internet S&amp;S</td><td>أوقيانوسيا</td><td>Growth 6-10yr</td><td>4</td><td>$11.0B</td><td class="t-success">21.8x</td></tr>
+              <tr><td>Fintech</td><td>أوروبا</td><td>Growth 6-10yr</td><td>21</td><td>$7.5B</td><td>7.8x</td></tr>
+              <tr><td>E-commerce</td><td>آسيا</td><td>Growth 6-10yr</td><td>23</td><td>$6.1B</td><td>6.3x</td></tr>
+              <tr><td>Fintech</td><td>أمريكا ش.</td><td>Early 3-5yr</td><td>51</td><td>$5.0B</td><td>10.5x</td></tr>
+              <tr><td>AI</td><td>أمريكا ش.</td><td>Blitzscale 0-2yr</td><td>8</td><td>$4.9B</td><td>8.3x</td></tr>
+              <tr><td>Data Analytics</td><td>أمريكا ش.</td><td>Growth 6-10yr</td><td>14</td><td>$4.9B</td><td>6.8x</td></tr>
+              <tr><td>Auto &amp; Transport</td><td>آسيا</td><td>Growth 6-10yr</td><td>5</td><td>$3.8B</td><td>10.2x</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card reveal">
+          <div class="card-hdr"><div class="card-over">الفينتاج المثالي — Vintage Analysis</div><div class="card-title">أفضل سنوات التأسيس للاستثمار (min. 5 شركات)</div></div>
+          <div class="sp3">
+            <div class="flex justify-between items-center" style="background:var(--ink-50);padding:12px;border-radius:var(--radius);border:1px solid var(--ink-100)"><div><div style="font-weight:700;color:var(--primary);font-size:.85rem">2008 — الأفضل</div><div style="font-size:.7rem;color:var(--ink-400)">27 شركة</div></div><div style="text-align:left"><div style="font-weight:700;color:var(--success-l);font-size:.85rem">$7.0B avg</div><div style="font-size:.7rem;color:var(--ink-400)">7.3x CapEff</div></div></div>
+            <div class="flex justify-between items-center" style="background:var(--ink-50);padding:12px;border-radius:var(--radius);border:1px solid var(--ink-100)"><div><div style="font-weight:700;color:var(--primary);font-size:.85rem">2012</div><div style="font-size:.7rem;color:var(--ink-400)">95 شركة</div></div><div style="text-align:left"><div style="font-weight:700;color:var(--accent);font-size:.85rem">$6.3B avg</div><div style="font-size:.7rem;color:var(--ink-400)">9.2x CapEff</div></div></div>
+            <div class="flex justify-between items-center" style="background:var(--ink-50);padding:12px;border-radius:var(--radius);border:1px solid var(--ink-100)"><div><div style="font-weight:700;color:var(--primary);font-size:.85rem">2010</div><div style="font-size:.7rem;color:var(--ink-400)">40 شركة</div></div><div style="text-align:left"><div style="font-weight:700;color:var(--accent);font-size:.85rem">$4.5B avg</div><div style="font-size:.7rem;color:var(--ink-400)">8.1x CapEff</div></div></div>
+            <div class="flex justify-between items-center" style="background:var(--ink-50);padding:12px;border-radius:var(--radius);border:1px solid var(--ink-100)"><div><div style="font-weight:700;color:var(--primary);font-size:.85rem">2013</div><div style="font-size:.7rem;color:var(--ink-400)">87 شركة</div></div><div style="text-align:left"><div style="font-weight:700;color:var(--accent);font-size:.85rem">$3.9B avg</div><div style="font-size:.7rem;color:var(--ink-400)">7.1x CapEff</div></div></div>
+            <div class="panel info mt-2"><div class="panel-title">توصية الفينتاج الحالي (2026)</div><p>الشركات المؤسسة بين <strong>2019–2022</strong> هي الفينتاج الأمثل حالياً — في مرحلة النضج المبكر (4–7 سنوات).</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="card gap reveal" style="border:2px solid var(--primary)">
+        <div class="card-hdr flex items-center gap-3">
+          <div style="width:36px;height:36px;background:var(--primary);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div><div class="card-over">التوصية الاستثمارية النهائية</div><div class="card-title" style="font-size:1rem">توزيع محفظة $500 مليون — خريطة التخصيص المثلى</div></div>
+        </div>
+        <div class="grid-5">
+          <div class="alloc" style="background:linear-gradient(160deg,#0A3D62,#1C6EA4)"><div class="alloc-amt">$150M</div><div class="alloc-pct">30% من المحفظة</div><div class="alloc-name">Artificial Intelligence</div><div class="alloc-geo">آسيا (الصين + الهند + سنغافورة) &middot; Early Stage &middot; 3-5 سنوات</div><div class="alloc-ret">العائد المستهدف: <span>8–15x</span> في 5-7 سنوات</div></div>
+          <div class="alloc" style="background:linear-gradient(160deg,#4C1D95,#6D28D9)"><div class="alloc-amt">$125M</div><div class="alloc-pct">25% من المحفظة</div><div class="alloc-name">Fintech</div><div class="alloc-geo">أوروبا + أمريكا اللاتينية &middot; Growth Stage &middot; 5-8 سنوات</div><div class="alloc-ret">العائد المستهدف: <span>5–8x</span> في 4-6 سنوات</div></div>
+          <div class="alloc" style="background:linear-gradient(160deg,#064E3B,#059669)"><div class="alloc-amt">$100M</div><div class="alloc-pct">20% من المحفظة</div><div class="alloc-name">Internet SaaS</div><div class="alloc-geo">أوقيانوسيا + كندا + إسرائيل &middot; Growth &middot; 6-10 سنوات</div><div class="alloc-ret">العائد المستهدف: <span>10–20x</span> (كفاءة &ge;15x)</div></div>
+          <div class="alloc" style="background:linear-gradient(160deg,#7F1D1D,#B91C1C)"><div class="alloc-amt">$75M</div><div class="alloc-pct">15% من المحفظة</div><div class="alloc-name">Cybersecurity</div><div class="alloc-geo">إسرائيل + أمريكا الشمالية &middot; Early &middot; 3-6 سنوات</div><div class="alloc-ret">العائد المستهدف: <span>6–12x</span> في 4-6 سنوات</div></div>
+          <div class="alloc" style="background:linear-gradient(160deg,#78350F,#B45309)"><div class="alloc-amt">$50M</div><div class="alloc-pct">10% من المحفظة</div><div class="alloc-name">Blitzscale Bets</div><div class="alloc-geo">كندا / سنغافورة / إيرلندا &middot; Blitzscale &middot; 0-3 سنوات</div><div class="alloc-ret">العائد المستهدف: <span>15–30x</span> (مخاطرة أعلى)</div></div>
+        </div>
+        <div class="panel info mt-4"><div class="panel-title">أفضل تركيبة موثقة تاريخياً</div><p><strong>AI &times; آسيا &times; Early Stage (3-5 سنوات)</strong> = متوسط تقييم <strong>$16.8B</strong> مع كفاءة رأسمالية <strong>8.2x</strong> — مدعومة بـ 12 شركة موثقة في البيانات التاريخية.</p></div>
+      </div>
+    </section>
+
+    <hr class="sep"/>
+
+    <!-- MODULE V -->
+    <section class="gap" aria-labelledby="m5-h">
+      <div class="sec-hdr">
+        <div class="sec-num" aria-hidden="true" style="background:#7B2C2C">V</div>
+        <div><div class="sec-tag" style="color:var(--danger-l)">الرؤى الاستراتيجية</div><h2 id="m5-h" class="sec-title">الاكتشافات المضادة للحدس &mdash; Counter-Intuitive Findings</h2></div>
+      </div>
+      <div class="grid-3">
+        <div class="panel danger reveal"><div class="panel-title">التمويل الأعلى لا يعني تقييماً أعلى</div><p>Zapier بلغ $4B بأقل من مليون دولار (4,000x). SHEIN وصل $100B بـ $2B فقط (50x). شركات Auto &amp; Transport تأخذ $1.1B متوسط لكن تنتج 4.3x فقط.</p></div>
+        <div class="panel danger reveal"><div class="panel-title">2021 كانت فقاعة كمية لا نوعية</div><p>520 شركة في سنة واحدة لكن بأدنى متوسط تقييم $2.3B. الكمية الضخمة خففت الجودة. المستثمرون الذين ركزوا على الكمية تكبّدوا خسائر جوهرية.</p></div>
+        <div class="panel warn reveal"><div class="panel-title">Health ليست الفرصة الذهبية</div><p>أنتجت أضعف مؤشر جاذبية (0.215). أعلى وقت وصول (8.2 سنة) وكفاءة متوسطة (6.3x). تتطلب صبراً لا يتوافق مع دورة صناديق VC التقليدية.</p></div>
+        <div class="panel ok reveal"><div class="panel-title">إيرلندا — الكنز الجغرافي المهمل</div><p>5 شركات فقط لكن بكفاءة رأسمالية 29.2x — الأعلى عالمياً. نظام ضريبي ملائم، وصول للسوق الأوروبي، وتكاليف أقل من UK.</p></div>
+        <div class="panel ok reveal"><div class="panel-title">أستراليا والسويد — جودة بلا كمية</div><p>أستراليا (8 شركات) $7.0B متوسط. السويد (6 شركات) $10.5B. الأسواق الصغيرة تصنع عمالقة.</p></div>
+        <div class="panel info reveal"><div class="panel-title">Tiger Global &times; آسيا = مضاعفة العوائد</div><p>Tiger Global ينتج $10.6B متوسط تقييم في آسيا — ضعف أدائه في أمريكا الشمالية.</p></div>
+      </div>
+    </section>
+
+    <!-- REFERENCE -->
+    <section aria-labelledby="ref-h">
+      <div class="card reveal">
+        <div class="card-hdr"><div class="card-over">الملخص التنفيذي</div><h2 id="ref-h" class="card-title">المؤشرات المرجعية الرئيسية — مرجع سريع</h2></div>
+        <div class="grid-2" style="gap:24px">
+          <table class="exec-table data-no-filter">
+            <thead><tr><th>المؤشر</th><th>القيمة</th></tr></thead>
+            <tbody>
+              <tr><td>أفضل صناعة بالمؤشر الكلي</td><td class="t-accent">Internet S&amp;S (0.643)</td></tr>
+              <tr><td>أعلى متوسط تقييم بالصناعة</td><td class="t-success">AI ($4.9B)</td></tr>
+              <tr><td>أعلى كفاءة رأسمالية بالصناعة</td><td class="t-success">Internet S&amp;S (28.7x)</td></tr>
+              <tr><td>أفضل دولة بالقيمة الإجمالية</td><td>USA ($1,933B)</td></tr>
+              <tr><td>أفضل دولة بمتوسط التقييم</td><td class="t-gold">السويد ($10.5B)</td></tr>
+            </tbody>
+          </table>
+          <table class="exec-table data-no-filter">
+            <thead><tr><th>المؤشر</th><th>القيمة</th></tr></thead>
+            <tbody>
+              <tr><td>أفضل دولة بالكفاءة الرأسمالية</td><td class="t-success">أيرلندا (29.2x)</td></tr>
+              <tr><td>أكثر دولة نمواً بعد 2019</td><td class="t-success">كندا (+1,900%)</td></tr>
+              <tr><td>أقوى تحالف استثماري</td><td>Seq. China + Tencent (9 صفقات)</td></tr>
+              <tr><td>أفضل مستثمر بالكفاءة</td><td class="t-accent">Bessemer (188.3x)</td></tr>
+              <tr><td>أفضل تركيبة موثقة</td><td class="t-accent">AI &times; آسيا &times; Early = $16.8B</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="exec-footer" role="contentinfo">
+  <div class="page-wrap">
+    <div class="footer-inner">
+      <div class="footer-brand"><strong>Global Unicorn Intelligence Report</strong> — التقرير التنفيذي الاستراتيجي للشركات المليارية<br/>بيانات من Unicorn_Companies.csv &middot; تحليل بمساعدة الذكاء الاصطناعي</div>
+      <div class="footer-meta"><strong>1,074 شركة</strong> &middot; 46 دولة &middot; بيانات حتى 2022<br/><strong>إصدار:</strong> يونيو 2026 &middot; سري — للاستخدام الداخلي</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  Chart.defaults.font.family="'IBM Plex Sans Arabic','IBM Plex Sans',sans-serif";
+  Chart.defaults.color='#656D76';
+  (function(){const ctx=document.getElementById('lineChart').getContext('2d');const labels=['2007','2011','2012','2013','2014','2015','2016','2017','2018','2019','2020','2021','2022'];const counts=[1,2,4,3,13,35,21,44,103,104,108,520,116];const avgVals=[1.0,26.0,32.8,2.0,12.8,2.4,4.1,7.9,5.7,4.4,3.7,2.3,1.7];const g=ctx.createLinearGradient(0,0,0,300);g.addColorStop(0,'rgba(10,61,98,0.18)');g.addColorStop(1,'rgba(10,61,98,0.01)');new Chart(ctx,{type:'line',data:{labels,datasets:[{label:'عدد الشركات الجديدة',data:counts,borderColor:'#0A3D62',backgroundColor:g,borderWidth:2,pointRadius:counts.map(v=>v===520?8:4),pointBackgroundColor:counts.map(v=>v===520?'#B91C1C':'#0A3D62'),pointBorderColor:'#fff',pointBorderWidth:2,fill:true,tension:0.4,yAxisID:'y'},{label:'متوسط التقييم ($B)',data:avgVals,borderColor:'#B8860B',backgroundColor:'transparent',borderWidth:1.8,borderDash:[5,4],pointRadius:3,pointBackgroundColor:'#B8860B',tension:0.4,yAxisID:'y2'}]},options:{responsive:true,maintainAspectRatio:true,interaction:{mode:'index',intersect:false},plugins:{legend:{position:'bottom',labels:{boxWidth:10,padding:14,font:{size:11}}},tooltip:{backgroundColor:'#0D1117',titleColor:'#C6CBD1',bodyColor:'#C6CBD1',callbacks:{label:c=>c.datasetIndex===0?` ${c.parsed.y} شركة`:` $${c.parsed.y}B متوسط`}}},easing:{mode:'linear'},scales:{x:{grid:{display:false},ticks:{font:{size:11}}},y:{type:'linear',position:'right',title:{display:true,text:'عدد الشركات',font:{size:10}},grid:{color:'#E6EAF0'},ticks:{font:{size:10}}},y2:{type:'linear',position:'left',title:{display:true,text:'متوسط التقييم ($B)',font:{size:10}},grid:{display:false},ticks:{font:{size:10},callback:v=>`$${v}B`}}}}});})();
+  (function(){const ctx=document.getElementById('capEffChart').getContext('2d');const data=[['Internet S&S',28.7],['Fintech',9.1],['Mobile & Telecom',9.4],['Consumer & Retail',8.0],['Hardware',8.0],['Data Analytics',6.8],['E-commerce',6.4],['Health',6.3],['Cybersecurity',6.0],['AI',5.7]].sort((a,b)=>b[1]-a[1]);new Chart(ctx,{type:'bar',data:{labels:data.map(d=>d[0]),datasets:[{label:'الكفاءة الرأسمالية (x)',data:data.map(d=>d[1]),backgroundColor:data.map(d=>d[1]>=20?'#1A6B3C':d[1]>=9?'#0A3D62':d[1]>=7?'#1C6EA4':'#9CA3AF'),borderRadius:3,borderSkipped:false}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:{backgroundColor:'#0D1117',bodyColor:'#C6CBD1',callbacks:{label:c=>` ${c.parsed.x}x`}}},scales:{x:{grid:{color:'#E6EAF0'},ticks:{callback:v=>`${v}x`,font:{size:11}}},y:{grid:{display:false},ticks:{font:{size:11}}}}}});})();
+  (function(){const ctx=document.getElementById('doughnutChart').getContext('2d');new Chart(ctx,{type:'doughnut',data:{labels:['USA','China','India','UK','Europe','Others'],datasets:[{data:[52,16,6,4,8,14],backgroundColor:['#0A3D62','#B91C1C','#D97706','#6D28D9','#1A6B3C','#9CA3AF'],borderColor:'#fff',borderWidth:3,hoverOffset:6}]},options:{responsive:true,maintainAspectRatio:true,cutout:'65%',plugins:{legend:{display:false},tooltip:{backgroundColor:'#0D1117',bodyColor:'#C6CBD1',callbacks:{label:c=>` ${c.parsed}% من إجمالي الشركات`}}}}});})();
+  (function(){const ctx=document.getElementById('attractivenessChart').getContext('2d');const rows=[['Internet S&S',0.643],['Fintech',0.595],['Artificial Intelligence',0.549],['E-commerce',0.448],['Other',0.424],['Auto & Transport',0.353],['Data Analytics',0.352],['Consumer & Retail',0.352],['Hardware',0.329],['Mobile & Telecom',0.305],['Cybersecurity',0.246],['Supply Chain',0.237],['Edtech',0.224],['Health',0.215],['Travel',0.160]];new Chart(ctx,{type:'bar',data:{labels:rows.map(r=>r[0]),datasets:[{label:'مؤشر الجاذبية',data:rows.map(r=>r[1]),backgroundColor:rows.map(r=>r[1]>=0.55?'#1A6B3C':r[1]>=0.40?'#0A3D62':r[1]>=0.30?'#1C6EA4':'#9CA3AF'),borderRadius:3,borderSkipped:false}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:{backgroundColor:'#0D1117',bodyColor:'#C6CBD1',callbacks:{label:c=>` المؤشر: ${c.parsed.y.toFixed(3)}`}}},scales:{y:{min:0,max:0.75,grid:{color:'#E6EAF0'},ticks:{font:{size:11}}},x:{grid:{display:false},ticks:{font:{size:11},maxRotation:30}}}}});})();
+  (function(){const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:0.08});document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));})();
+  const ci={};document.querySelectorAll('canvas').forEach(c=>{const ch=Chart.getChart(c);if(ch)ci[c.id]=ch});
+  const od={};Object.entries(ci).forEach(([id,c])=>{if(c.config.type==='bar')od[id]={labels:[...c.data.labels],data:[...c.data.datasets[0].data],bg:[...c.data.datasets[0].backgroundColor]}});
+  window.filterDashboard=function(){const v=document.getElementById('industryFilter').value.toLowerCase();document.querySelectorAll('.exec-table:not(.data-no-filter)').forEach(t=>{t.querySelectorAll('tbody tr').forEach(r=>{if(v==='all'){r.style.display='';return}r.style.display=r.textContent.toLowerCase().includes(v)?'':'none'})});Object.entries(ci).forEach(([id,c])=>{if(c.config.type!=='bar'||!od[id])return;const o=od[id],ds=c.data.datasets[0];ds.backgroundColor=v==='all'?[...o.bg]:o.labels.map((l,i)=>{const m=l.toLowerCase().includes(v);const base=o.bg[i]||'#9CA3AF';return m?base:base+'22'});c.update('none')})};
+</script>
+</body>
+</html>
