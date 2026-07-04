@@ -47,11 +47,10 @@
       /* Filter bar */
       .filter-bar{flex-wrap:wrap;gap:12px;padding:14px 20px}
       .filter-bar select{width:100%;font-size:.82rem}
-      /* KPI - Swipeable on mobile */
-      .kpi-grid{display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;gap:14px;padding-bottom:12px;margin:0 -20px;padding-left:20px;padding-right:20px}
-      .kpi-card{flex:0 0 220px}
-      .kpi-val{font-size:1.4rem}
-      .kpi-grid::-webkit-scrollbar{display:none}
+      /* KPI - Grid 2 columns */
+      .kpi-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+      .kpi-card{padding:14px;min-width:0}
+      .kpi-val{font-size:1.35rem}
       /* Card padding */
       .card{padding:20px}
       /* Tables: make scrollable on mobile */
@@ -84,12 +83,11 @@
       .exec-header-brand{padding:20px 16px 16px}
       .exec-header-brand h1{font-size:1.15rem;line-height:1.35}
       .exec-report-tag{font-size:.6rem;padding:3px 10px}
-      /* KPI: Swipeable on very small screens */
-      .kpi-grid{display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;gap:12px;padding-bottom:12px;margin:0 -16px;padding-left:16px;padding-right:16px}
-      .kpi-card{flex:0 0 200px;padding:16px 14px}
-      .kpi-val{font-size:1.5rem}
-      .kpi-lbl{font-size:.65rem}
-      .kpi-grid::-webkit-scrollbar{display:none}
+      /* KPI - Grid 2 columns */
+      .kpi-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+      .kpi-card{padding:12px 10px;min-width:0}
+      .kpi-val{font-size:1.2rem}
+      .kpi-lbl{font-size:.6rem}
       /* Cards */
       .card{padding:16px}
       .card-title{font-size:.9rem}
