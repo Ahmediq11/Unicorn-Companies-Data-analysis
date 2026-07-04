@@ -25,7 +25,7 @@
     /* ═══════════════════════════════════════════════════════════════
        RESPONSIVE — TABLET (≤1024px)
     ═══════════════════════════════════════════════════════════════ */
-    @media(max-width:1024px){
+    @media (max-width: 1024px) {
       .grid-5{grid-template-columns:repeat(3,1fr)}
       .kpi-grid{grid-template-columns:repeat(3,1fr)}
       .exec-header-brand h1{font-size:1.4rem}
@@ -34,7 +34,7 @@
     /* ═══════════════════════════════════════════════════════════════
        RESPONSIVE — TABLET PORTRAIT (≤768px)
     ═══════════════════════════════════════════════════════════════ */
-    @media(max-width:768px){
+    @media (max-width: 768px) {
       .grid-2,.grid-3,.grid-5{grid-template-columns:1fr !important}
       .page-wrap{padding:0 20px}
       /* Header: stack vertically */
@@ -76,7 +76,7 @@
     /* ═══════════════════════════════════════════════════════════════
        RESPONSIVE — MOBILE (≤480px)
     ═══════════════════════════════════════════════════════════════ */
-    @media(max-width:480px){
+    @media (max-width: 480px) {
       html{font-size:14px}
       .page-wrap{padding:0 16px}
       /* Header compact */
