@@ -1,7 +1,7 @@
 :root{--ink-900:#0D1117;--ink-800:#161B22;--ink-700:#21262D;--ink-600:#30363D;--ink-400:#656D76;--ink-200:#C6CBD1;--ink-100:#E6EAF0;--ink-50:#F6F8FA;--primary:#0A3D62;--accent:#1C6EA4;--accent-l:#2980B9;--gold:#B8860B;--gold-l:#D4A017;--success-l:#27AE60;--danger-l:#C0392B;--warn:#7D5A00;--radius:4px;--radius-m:6px;--shadow-sm:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.04);--shadow-md:0 2px 8px rgba(0,0,0,.10),0 1px 4px rgba(0,0,0,.06)}
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth;font-size:14px}
-    body{font-family:'IBM Plex Sans Arabic','IBM Plex Sans',sans-serif;background:#EDEEF0;color:var(--ink-800);line-height:1.6}
+    html{scroll-behavior:smooth;font-size:14px;overflow-x:hidden;max-width:100vw}
+    body{font-family:'IBM Plex Sans Arabic','IBM Plex Sans',sans-serif;background:#EDEEF0;color:var(--ink-800);line-height:1.6;overflow-x:hidden;max-width:100vw}
     .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
     .page-wrap{max-width:1280px;margin:0 auto;padding:0 24px}
     /* HEADER */
@@ -53,7 +53,6 @@
       /* Card padding */
       .card{padding:20px}
       /* Tables: make scrollable on mobile */
-      .overflow-x{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;width:100%}
       .exec-table{width:100%;min-width:max-content}
       .exec-table thead th{white-space:nowrap;font-size:.7rem;padding:10px 12px}
       .exec-table tbody td{white-space:nowrap;font-size:.78rem;padding:9px 12px}
@@ -148,13 +147,13 @@
     .kpi-val sup{font-size:.9rem;font-weight:600}
     .kpi-sub{font-size:.7rem;color:var(--ink-400);margin-top:4px}
     /* CARDS */
-    .card{background:#fff;border:1px solid var(--ink-100);border-radius:var(--radius-m);padding:22px;box-shadow:var(--shadow-sm)}
+    .card{background:#fff;border:1px solid var(--ink-100);border-radius:var(--radius-m);padding:22px;box-shadow:var(--shadow-sm);min-width:0;max-width:100%;word-wrap:break-word}
     .card-hdr{margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--ink-100)}
     .card-over{font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
     .card-title{font-size:.92rem;font-weight:700;color:var(--primary)}
     .card-sub{font-size:.72rem;color:var(--ink-400);margin-top:2px}
     /* CHART */
-    .chart-wrap{position:relative;width:100%}.chart-wrap canvas{max-height:320px}
+    .chart-wrap{position:relative;width:100%;min-width:0;max-width:100%;overflow:hidden}.chart-wrap canvas{max-height:320px;max-width:100% !important}
     /* TABLE */
     .exec-table{width:100%;border-collapse:collapse}
     .exec-table thead th{background:var(--primary);color:#fff;font-size:.68rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:9px 12px;text-align:right;white-space:nowrap}
@@ -208,7 +207,7 @@
     .footer-brand{font-size:.72rem;color:var(--ink-400)}.footer-brand strong{color:var(--ink-200)}
     .footer-meta{font-size:.7rem;color:var(--ink-400);text-align:left}.footer-meta strong{color:var(--ink-200)}
     /* HELPERS */
-    .flex{display:flex}.flex-col{flex-direction:column}.items-center{align-items:center}.justify-between{justify-content:space-between}.gap-3{gap:12px}.flex-1{flex:1}.mt-2{margin-top:8px}.mt-3{margin-top:12px}.mt-4{margin-top:16px}.mb-3{margin-bottom:12px}.overflow-x{overflow-x:auto}.sp3>*+*{margin-top:12px}.sp4>*+*{margin-top:16px}.w-full{width:100%}
+    .flex{display:flex}.flex-col{flex-direction:column}.items-center{align-items:center}.justify-between{justify-content:space-between}.gap-3{gap:12px}.flex-1{flex:1}.mt-2{margin-top:8px}.mt-3{margin-top:12px}.mt-4{margin-top:16px}.mb-3{margin-bottom:12px}.overflow-x{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;width:100%;max-width:100%}.sp3>*+*{margin-top:12px}.sp4>*+*{margin-top:16px}.w-full{width:100%}
     .reveal{opacity:0;transform:translateY(18px);transition:opacity .5s ease-out,transform .5s ease-out}.reveal.visible{opacity:1;transform:translateY(0)}
     @media print{body{background:white}.exec-header{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
     ::-webkit-scrollbar{width:6px;height:6px}::-webkit-scrollbar-track{background:var(--ink-100)}::-webkit-scrollbar-thumb{background:var(--ink-200);border-radius:3px}
